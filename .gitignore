@@ -6,4 +6,4 @@ erahtur/media/music/*
 erahtur/erahtur_db
 erahtur/settings_local.py
 tornado-chat/settings_local.py
-tornado-chat/venv
+venv/
