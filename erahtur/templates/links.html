@@ -1,0 +1,28 @@
+{% extends 'erahtur_main.html' %}
+{% block title %}
+<title>Ерахтур - ссылки</title>
+{% endblock %}
+
+{% block extrahead %}
+<script type='text/javascript' src='{{ MEDIA_URL }}js/links_accordion.js'></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="content_wrapper">
+	<div id="accordion">
+	{% for link_section in links_sections %}	
+		<h3 class="toggler">{{ link_section.name }}</h3>
+		<div class="element">
+			<ul>
+				{% for link in link_section.links.all %}
+				<li><a href='{{ link.href }}'>{{ link.name }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endfor %}
+
+	</div>
+</div>
+
+{% endblock %}

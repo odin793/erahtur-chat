@@ -1,0 +1,70 @@
+<li class="first">
+	<a href="{% url all_publications_types %}" id="nb_publications">Новости</a>
+	<ul id="dropdown">
+		<li><a href="{% url pub_list 'district' 1 %}">Округ</a></li>
+		<li><a href="{% url pub_list 'region' 1 %}">Район</a></li>
+		<li><a href="{% url pub_list 'oblast' 1 %}">Область</a></li>
+		<li class="dropdown_li_last"><a href="/pub_archive/">Архив</a></li>
+	</ul>
+</li>
+<li>
+	<a href='{% url hist_list %}' id="nb_history">История</a>
+	<ul>
+	{% for hist in hist_list %}
+		{% if forloop.last %}
+			<li class="dropdown_li_last"><a href='{% url history hist.id %}' class="nb2">{{ hist.period }}</a></li>
+		{% else %}
+			<li><a href='{% url history hist.id %}' class="nb2">{{ hist.period }}</a></li>
+		{% endif %}
+	{% endfor %}
+	</ul>							
+</li>
+<li>
+	<a href='{% url org_list %}' id="nb_organizations">Организации</a>
+	<ul class="dropdown">
+		{% for org in org_list %}
+			{% if forloop.last %}
+				<li class="dropdown_li_last">
+					<a href='{% url organization org.id %}' class="nb3">{{ org.name }}</a>
+				</li>
+			{% else %}
+				<li>
+					<a href='{% url organization org.id %}' class="nb3">{{ org.name }}</a>
+				</li>
+			{% endif %}				
+		{% endfor %}
+	</ul>	
+</li>
+<li>
+	<a href='{% url neighbour_list %}' id="nb_neighbours">Соседи</a>
+	<ul class="dropdown">
+		{% for n in neighbour_list %}
+			{% if forloop.last %}
+				<li class="dropdown_li_last">
+					<a href='{% url neighbour n.id %}' class="nb4">{{ n.name }}</a>
+				</li>
+			{% else %}
+				<li>
+					<a href='{% url neighbour n.id %}' class="nb4">{{ n.name }}</a>
+				</li>
+			{% endif %}			
+		{% endfor %}
+	</ul>	
+</li>
+<li>
+	<a href='#' id="nb_communications">Общение</a>
+	<ul class="dropdown">
+		<li><a href='/forum' class="nb5">Форум</a></li>
+		<li class="dropdown_li_last" id="go_to_chat"><a href='http://127.0.0.1:8001/' class="nb5">Чат</a></li>
+	</ul>
+</li>
+<li>
+	<a href='{% url creation %}' id="nb_creation">Творчество</a>
+	<ul class="dropdown">
+		<li><a href='{% url music %}' class="nb6">Музыка</a></li>
+		<li class="dropdown_li_last"><a href='{% url photoalbums %}' class="nb6">Фото</a></li>
+	</ul>
+</li>
+<li class="last">
+	<a href='{% url links %}' id="nb_links">Ссылки</a>
+</li>

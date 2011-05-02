@@ -1,0 +1,6 @@
+*.pyc
+*_thumbnail.jpg
+*.jpg
+*.mp3
+erahtur_db
+settings_local.py

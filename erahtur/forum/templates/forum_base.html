@@ -1,0 +1,129 @@
+{% comment %}
+{% extends "erahtur_main.html" %}
+{% endcomment %}
+{% load i18n %}
+
+
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="alternate" type="application/rss+xml" title="{% trans "All Latest Posts via RSS" %}" href="{% url 		forum_index %}rss/" />
+	<link rel="alternate" type="application/atom+xml" title="{% trans "All Latest Posts via ATOM" %}" href="{% url 	forum_index %}atom/" />
+{% block extrahead %}{% endblock %}
+</head>
+
+<style type='text/css'><!--
+body {
+    font-family: Verdana;
+    font-size: 14px;
+    text-align: center;
+}
+
+blockquote {
+	font-size: 12px;
+	border-left: 1px solid red;
+	padding-left: 5px;
+}
+
+textarea, input {
+	font: 16px serif;
+}
+
+ul.errorlist {
+	list-style-type: none;
+	color: #660000;
+}
+
+#djangoForumBody {
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#djangoForumList,
+#djangoForumThreadList,
+#djangoForumThreadPosts {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#djangoForumList td,
+#djangoForumThreadList td,
+#djangoForumThreadPosts td {
+    border: solid #777 1px;
+    padding: 6px;
+}
+
+#djangoForumList .djangoForumListDetails {
+    width: 70%;
+}
+
+#djangoForumList .djangoForumListDetails strong {
+    font-size: 110%;
+}
+
+#djangoForumList .djangoForumListDetails .djangoForumStats {
+    font-size: 80%;
+}
+
+.djangoForumListLastPost,
+.djangoForumThreadLastPost {
+    background-color: #ccc;
+    border-bottom: solid #777 1px;
+}
+
+#djangoForumList th,
+#djangoForumThreadList th,
+#djangoForumThreadPosts th {
+    /*background-color: #3a3;*/
+		background-color: #D1D1D1;
+    border: solid #777 1px;
+    /*color: #fff;*/
+		color: #414141;
+    text-align: center;
+    padding: 4px;
+}
+
+#djangoForumThreadPosts th {
+    width: 20%;
+}
+
+#djangoForumBreadcrumbs {
+    padding: 20px;
+}
+
+#djangoForumBody label {
+    font-size: 110%;
+    font-weight: bold;
+    display: block;
+    padding: 4px;
+}
+
+#djangoForumThreadPostDetail {
+    width: 20%;
+}
+.djangoForumPagination {
+    display: inline;
+}
+.ForumForm {
+	font-size: 14px;
+}
+--></style>
+
+<body>
+
+	<div id='djangoForumBody'>
+		<h1>{% block pagetitle %}Добро пожаловать на форумы Ерахтура{% endblock %}</h1>
+		<h4>{% block forum_descr %}{% endblock %}</h4>
+		<div id='djangoForumBreadcrumbs'>
+			<a href='/'>Ерахтур</a> 
+			&raquo; 
+			<a href='{% url forum_index %}'>Форумы</a>
+			{% block breadcrumbs %}{% endblock %}
+		</div>
+		{% block content %}{% endblock %}
+	</div>
+
+</body>
+</html>
+

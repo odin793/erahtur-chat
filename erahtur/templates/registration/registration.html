@@ -1,0 +1,58 @@
+{% extends 'erahtur_main.html' %}
+
+{% block content %}
+<div class="user_content_wrapper">
+	<form method="POST" action="." id="reg_form">
+		<h3>Регистрация</h3>
+		<span id="error">{{ form.username.errors }}</span>
+		<table cellspacing="5px">
+			<tr>
+				<td class="label">
+    			
+    			<label for="id_username"> Логин:</label>
+				</td>
+				<td class="value">
+					<input type="text" maxlength="30" name="username" id="id_username" />	
+					<a href="#" id="check_username_unique" style="position: relative; left: 30px;">Проверить</a>
+				</td>
+
+			</tr>			
+		
+			<tr>
+    		<td class="label">
+					<span id="error">{{ form.password1.errors }}</span>
+    			<label for="id_password1">Пароль:</label>
+				</td>
+				<td class="value">
+    			<input type="password" name="password1" id="id_password1" maxlength="30" />
+				</td>
+			</tr>
+		
+			<tr>
+				<td class="label">					
+      		<span id="error">{{ form.password2.errors }}</span>
+    			<label for="id_password2">Пароль (подтверждение):</label>
+				</td>
+				<td class="value">
+    			<input type="password" name="password2" id="id_password2" />
+				</td>
+			</tr>
+		
+			<tr>
+				<td class="label">
+					<span id="error">{{ form.email.errors }}</span>
+    			<label for="id_username">Email:</label>
+				</td>
+				<td class="value">
+    			{{ form.email }}
+				</td>
+			</tr>
+    </table>
+
+		<span id="register">
+    	<input type="submit" value="Зарегистрируйте меня" class='_submit' />
+   	</span>
+	</form>
+</div>
+
+{% endblock %}

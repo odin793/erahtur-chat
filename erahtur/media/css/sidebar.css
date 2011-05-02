@@ -1,0 +1,58 @@
+#sidebar {
+    float: left;
+    /*height: 300px;*/
+    height: auto;
+    margin-top: 40px;
+    margin-left: -225px;
+    position: relative;
+    width: 200px;
+    font-family: Arial;
+}
+   
+#sidebar .sidebar_wrapper {
+    background: #d1d1d1;
+    border-radius:12px;
+    -moz-border-radius:12px;
+    -webkit-border-radius:12px;
+    padding: 5px 5px 15px 5px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#sidebar .title {
+    height: 30px;
+	padding: 5px 0px 8px 0px;
+}
+
+#sidebar .archive {
+    text-align: center;
+}
+
+#sidebar a {
+    text-decoration: underline;
+    color: #414141;
+}
+
+#sidebar .archive_year {
+    color: #f87676;
+}
+
+#sidebar p {
+    color: #f87676;
+}
+
+.archive a {
+    color: black;
+}
+
+.tag_cloud {
+    font-size: 16px;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+}
+
+.tag_cloud a {
+    margin: 0px 2px;
+    text-decoration: none;    
+    color: #414141;
+}

@@ -1,0 +1,48 @@
+{% extends "forum_base.html" %}{% load i18n %}
+
+{% block title %}Форумы Ерахтура{% endblock %}
+
+{% block content %}
+<table id='djangoForumList'>
+<tr>
+	<th>Форум</th>
+	<th>Последнее сообщение</th>
+</tr>
+
+{% for forum in object_list %}
+<tr>
+	<td class='djangoForumListDetails'>
+		<p>
+			<strong><a href='{{ forum.get_absolute_url }}'>{{ forum.title }}</a></strong>
+			<br />
+			<span class='djangoForumStats'>Тем: {{ forum.threads }}, Сообщений: {{ forum.posts }}</span>
+		</p>
+		<p>{{ forum.description }}</p>
+	</td>
+	{% with forum.forum_latest_post as latest_post %}
+	<td class='djangoForumListLastPost'>
+		{% if latest_post %}
+			{{ latest_post.time|timesince }} назад
+			<br /> 
+			<a href="/accounts/user_profile/{{ latest_post.author }}">{{ latest_post.author }}</a>
+			(<a href='{{ latest_post.get_absolute_url }}'>просмотр</a>)
+		{% else %}
+			Сообщений нет
+		{% endif %}
+	</td>
+	{% endwith %}
+</tr>
+{% endfor %}
+</table>
+
+
+
+{% comment %}
+{% if user.is_authenticated %}
+	<p>
+		<a href="{% url forum_subscriptions %}">Обновить подписки</a>
+	</p>
+{% endif %}
+{% endcomment %}
+
+{% endblock %}

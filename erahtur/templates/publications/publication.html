@@ -1,0 +1,162 @@
+{% extends 'erahtur_main.html' %}
+{% load navbar %}
+{% block title %}
+<title>{{ publication.title }}</title>
+{% endblock %}
+{% block extrahead %}
+<script type='text/javascript' src='{{ MEDIA_URL }}js/publication.js'></script>
+<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+<script type="text/javascript">
+	new Ya.share({
+        element: 'ya_share',
+            elementStyle: {
+                'type': 'none',
+                'border': true,
+                'quickServices': ['twitter', '|', 'vkontakte', 'facebook','lj','|','odnoklassniki','moimir']
+            },
+						description: 'Официальный сайт Ерахтура epaxtyp.com',
+            serviceSpecific: {
+                twitter: {
+                	title: '#epaxtyp / ' + document.title
+               },
+								vkontakte: {
+									title: document.title + ' ' + window.location.href,
+									link: window.location.href,
+									//title: 'Официальный сайт Ерахтура',
+								},
+								lj: {
+									title: 'Epaxtyp - ' + document.title,
+								},
+        }
+});
+</script>
+{% endblock %}
+
+{% block content %}
+	<div class="publication_wrapper">
+		<div class="publication no_border">
+			<p class="title"> 
+				<a href="{% url publication publication.id %}">{{ publication.title }}</a>
+			</p>
+			<div class="entry"> {{ publication.content|safe }} </div>
+			<div class="pub_statistics rc4">
+				<div class="pub_date">
+					<span>{{ publication.date|pytils_date }}, {{ publication.date|date:"H:i" }}</span>
+				</div>
+				<div class="pub_words">
+					<span>слов:  <span class="active_font">{{ pub_stats.0 }}</span></span>
+				</div>
+				<div class="pub_photos">
+					<span>фото: <span class="active_font">{{ pub_stats.1 }}</span></span>
+				</div>
+				<div class="pub_comments">
+					<span>комментариев: <span class="active_font">{{ pub_stats.2 }}</span></span>
+				</div>
+			</div>
+			<br class="clear">
+			{% if publication.get_tags %}
+			<div class="pub_tags">
+			{% for tag in publication.get_tags %}
+				<div class="pub_tag"><a href="{% url pubs_by_tag tag.id %}">{{ tag.name|cut:"," }}</a></div>
+			{% endfor %}
+			<br class="clear">
+			</div>
+			{% endif %}
+			<div id="ya_share" class="ya_share"></div>
+
+			{% comment %}
+			<p class="date"> {{ publication.date|pytils_date }}, {{ publication.date|date:"H:i" }} </p>
+			{% endcomment %}
+		</div>
+
+		{% if photos %}
+		<hr>
+		<div id="photos_block_title">
+			Фотоблок (<span class="active_font">{{ photos|length }}</span>)
+		</div>		
+			<div id="photos_block">
+				{% for photo in photos %}
+				<a href="{{ photo.image.url }}" rel="lightbox[set1]" title="{{ photo.description }}">
+					<img src="{{ photo|get_thumbnail }}" alt="{{ photo.description }}" class="photo_thumb rc12"/>
+				</a>
+				{% endfor %}
+			</div>
+		{% endif %}
+		
+		<hr>
+		<div id="comments">
+			{% if publication.comment_set.all %}
+			<div id="comm_block_title">
+				Комментарии (<span class="active_font">{{ pub_stats.2 }}</span>)
+			</div>
+			{% endif %}
+			<div id="comments_block">
+				<div id="pub_comments">
+					{% if publication.comment_set.all %}
+					{% for comment in publication.comment_set.all %}
+						<div class="user_comment">
+							<div class="comments_avatar rc4">
+								<a href="/accounts/user_profile/{{ comment.author.username }}">
+									{% if comment.author.userprofile_set.all.0.avatar %}
+										<img  class="rc4" alt="{{ comment.author.name }}" width="50" height="50"
+										src="{{ comment.author.userprofile_set.all.0.avatar|get_thumbnail }}" >
+									{% else %}
+										<img alt="{{ comment.author.username }}" src="" >
+									{% endif %}
+								</a>
+							</div>
+							<div class="comments_name">
+								<a href="/accounts/user_profile/{{ comment.author.username }}">{{ comment.author.username }}</a>
+								<span>написал {{ comment.date_added|pytils_date }} в {{ comment.date_added|date:"H:i" }}</span>
+							</div>
+							<div class="comments_text_block">
+								<div class="comments_text rc4">
+									<span>{{ comment.text }}</span>
+								</div>
+							</div>
+							<br class="clear">
+						</div>
+					{% endfor %}
+					{% endif %}
+					
+					{% if user.is_authenticated %}
+					<form id="new_comment" method="POST" action="comments/new/">
+						<div id="new_comm_block_title">
+							Оставить комментарий
+						</div>
+						<div id="add_comment">
+							<div class="comments_avatar">
+								<a href="/accounts/user_profile/{{ user.username }}">
+									{% if user.userprofile_set.all.0.avatar %}
+										<img class="rc4" alt="{{ user.username }}" width="50" height="50"
+										src="{{ user.userprofile_set.all.0.avatar|get_thumbnail }}">
+									{% else %}
+										<img alt="{{ user.username }}" src="">
+									{% endif %}
+								</a>
+							</div>
+							<div class="add_comment_text">
+								<textarea id="comment_body" name="comments_text" cols="20" rows="4"></textarea>
+							</div>
+							<div id="comment_button">
+								<input type="submit" value="Комментировать" name="commit" id="add_comment_button" disabled="disabled" class="button">
+							</div>
+						</div>
+					</form>
+					{% else %}
+						<h2 style="font-size: 20px; margin: 30px 0 0">
+							Пожалуйста, 
+							<a href="{% url login_page%}?where={{ publication.get_absolute_url }}">войдите</a>, 
+							чтобы оставить комментарий.
+						</h2>
+						<h2 style="font-size: 20px; margin: 30px 0 0"> 
+							Еще не зарегестрировались? Тогда <a href="/accounts/registration/">вперед</a>.
+						</h2>
+					{% endif %}	
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

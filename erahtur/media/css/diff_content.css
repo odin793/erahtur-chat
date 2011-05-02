@@ -1,0 +1,233 @@
+.content_wrapper {
+    padding: 0px 20px 0px 15px;
+    font-family: Arial;    
+}
+
+.user_content_wrapper {
+    padding: 0px 20px 0px 15px;
+    font-family: Arial;
+}
+
+h3 {
+    margin: 10px 0;
+}
+
+.active_font {
+    color: #f87676;
+    font-family: Arial;
+}
+
+.no_decor {
+    text-decoration: none;
+}
+
+.rc4 {
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.rc12 {
+    border-radius: 12px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+}
+
+#hidden_chat_form {
+    display: none;
+}
+
+/* Songs (creation)
+----------------------------------------- */
+
+.songs_table {
+    border-collapse: collapse;
+    cellspacing: 0;
+}
+
+.songs_table .top {
+    font-style: italic;
+    font-size: 22px;
+    color: #f87676;
+}
+
+.songs_table td {
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    font: 18px Verdana;
+}
+
+.songs_table .player {
+    margin: 2px 0 0 5px;
+    /*position: relative;*/
+    /*top: 5px;*/
+}
+
+.songs_table .row1 {
+    background: none;
+}
+
+.songs_table .row2 {
+    background: #d1d1d1;
+}
+
+.songs_table .year {
+    padding-right: 5px;
+}
+
+/* Photos (creation)
+----------------------------------------- */
+
+.photo_album {
+    width: 630px;
+    margin: 0;
+    padding: 5px;
+}
+
+.key_photo {
+    margin: 5px 0;
+}
+
+/* Links 
+----------------------------------------- */
+
+#accordion {
+    text-align: center;
+}
+
+#accordion div {
+    display: block;
+}
+
+#accordion ul {
+    padding: 0px;
+}
+
+#accordion .toggler {
+    cursor: pointer;
+    margin: 7px 0;
+}
+
+/* User profile page
+----------------------------------------- */
+
+#profile_form {
+    text-align: center;
+}
+
+#profile_form input, select {
+    font-size: 15px;
+    /*height: 25px;*/
+}
+
+#profile_form .new_avatar {
+    visibility: hidden;
+    /*position: relative; 
+    left: 40px;
+    margin: 10px 0 15px 0;*/
+    text-align: center;
+}
+
+#profile_form_table {
+    /*position: relative;
+    left: 180px;*/
+    margin: 0 auto;
+}
+
+.user_profile_name {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#profile_form .avatar_image {
+    text-align: center;
+}
+
+#profile_form_table tr {
+    height: 30px;
+}
+
+#profile_form_table td {
+    margin: 10px;
+}
+
+td.label {
+    text-align: right;
+    width: 45%;
+}
+
+td.value {
+    text-align: left;
+    width: 55%;
+}
+
+.profile_form_submit {
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+
+.user_profile_ul {
+    text-align: center;
+}
+
+.user_profile_ul li {
+    padding: 5px 0;
+}
+
+#edit_profile {
+    color: black;
+}
+
+.field_wrapper {
+    padding: 10px 0px;
+}
+
+.phone_cell, .site_cell {
+    vertical-align: top;
+}
+
+/* Registration
+----------------------------------------- */
+
+#reg_form {
+    text-align: center;
+}
+
+#reg_form input {
+    font-size: 15px;
+}
+
+#reg_form table {
+    width: 100%;
+    text-align: center;
+}
+
+#reg_form #register {
+    position: relative;
+    top: 10px;
+}
+
+#reg_form #check_username_unique {
+    color: black;
+}
+
+#error {
+    color: #f87676;
+}
+
+/* Login page
+------------------------------------------------*/
+
+#login_page {
+    text-align: center;
+    padding: 20px;
+}
+
+.login_page_form input {
+    font-size: 18px;
+    padding: 0 5px 0 5px;
+    margin: 20px 5px 10px 5px;
+    text-align: center;
+}

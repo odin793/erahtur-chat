@@ -1,0 +1,39 @@
+{% extends "forum_base.html" %}
+{% load i18n %}
+
+{% block title %}
+	{% blocktrans with forum.title as title %}New Thread in {{ title }}{% endblocktrans %}
+{% endblock %}
+
+{% block extrahead %}
+{% comment %}
+<link rel="alternate" type="application/rss+xml" title="{% blocktrans %}{{ forum.title }} Posts via RSS{% endblocktrans %}" href="{% url forum_index %}rss/{{ forum.slug }}/" />
+<link rel="alternate" type="application/atom+xml" title="{% blocktrans %}{{ forum.title }} Posts via ATOM{% endblocktrans %}" href="{% url forum_index %}atom/{{ forum.slug }}/" />
+{% endcomment %}
+{% endblock %}
+
+{% block pagetitle %}Новая тема в форуме "{{ forum.title }}"{% endblock %}
+
+{% block breadcrumbs %}
+	{% for title, url in forum.get_url_name %} 
+		&raquo; <a href='{{ url }}'>{{ title }}</a> 
+	{% endfor %} 
+	&raquo; Новая тема
+{% endblock %}
+
+
+{% block content %}
+<h2>Добавить тему</h2>
+<form method='post' action='./'>
+
+{% comment %}
+{% csrf_token %}
+{% if form.errors %}<ul>{{ form.errors.as_ul }}</ul>{% endif %}
+{% endcomment %}
+
+<p><span>Автор: <strong>{{ user.username }}</strong></span></p>
+{{ form.as_p }}
+<p><input type='submit' value="Добавить" /></p>
+</form>
+
+{% endblock %}

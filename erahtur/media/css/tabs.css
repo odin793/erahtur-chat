@@ -1,0 +1,136 @@
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: visible;
+}
+
+.on {
+    cursor: pointer;
+    background: #f87676;
+    color: white;
+}
+
+.off {
+    cursor: pointer;
+    background: #d1d1d1;
+}
+
+.tabOver {
+    background: #f87676;
+}
+
+ul.tabSet li {
+    display: block;
+    float: left;
+    margin: 0px 60px;
+    font-size: 18px;
+    height: 30px;
+    width: 80px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 0px;
+	text-decoration: none;
+	text-transform: lowercase;
+	color: black;
+	-webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    font-family: Arial;
+}
+
+ul.tabSet li a {
+    color: black;
+}
+
+.tabSet .active_tab {
+    background: #f87676;
+}
+
+.tabSet .active_link {
+    color: white;
+}
+
+.tabsHolder {
+    width: 600px;
+    position: relative;
+    top: 0px;
+    left: 80px; 
+}
+
+.tabsHolder li {
+    display: block;
+    float: left;
+    overflow: hidden;
+    
+}
+
+#tabBox {
+    position: relative;
+    height: 60px;
+    text-align: center;
+}
+
+.panelSet {
+    position: relative;
+    width: 720px;
+    height: auto;
+    padding-right: 20px;
+    top: 60px;
+    left: 20px;
+}
+
+/* Pagination
+------------------------------------------------*/
+
+.filmfeed_pages, .filmfeed_blocks {
+    border: 1px solid #2B2B2B;
+    background-color: #000;
+    color: #808080;
+    display: block;
+    float: left;
+    font-size: 20px;
+    margin-bottom: 0.5em;
+    margin-right: 0.3em;
+    margin-top: 0.15em;
+    padding: 0.1em 0.5em 0.1em 0.4em;
+    text-decoration: none;
+}
+
+a.filmfeed_pages:hover {
+    background-color: #f87676;
+    color: white;
+}
+
+span.filmfeed_pages_disabled, span.filmfeed_blocks_disabled {
+    background-color:#f87676;
+    border-color:#A60000;    
+    border-color:#3B3B3B;
+    color:#fff;
+    border:1px solid #2B2B2B;
+    display:block;
+    float: left;
+    font-family: Helvetica;
+    font-size:20px;
+    margin-bottom:0.5em;
+    margin-right:0.3em;
+    margin-top:0.15em;
+    padding:0.1em 0.5em 0.1em 0.4em;
+}
+
+.page_switch {
+    height: 100px;
+}
+.page_switch #switch_panel {
+    width: 760px;
+    height: 50px;
+    z-index: 2;
+}
+.page_switch #blocks_panel {
+    width: 760px;
+    height: 50px;
+    position: relative;
+    top: 0px;
+    z-index: 1;
+}

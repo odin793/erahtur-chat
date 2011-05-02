@@ -1,0 +1,31 @@
+{% extends 'erahtur_main.html' %}
+{% load navbar %}
+{% block title %}
+<title>Ерахтур - история</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="publication_wrapper">
+	<div class="publication no_border">
+		<h3>История / <span class="active_font">{{ history.period }}</span></h3>
+		<div class="entry"> {{ history.content|safe }} </div>
+	</div>
+
+		{% if photos %}
+		<hr>
+		<div id="photos_block_title">
+			Фотоблок (<span class="active_font">{{ photos|length }}</span>)
+		</div>		
+		<div id="photos_block">
+			{% for photo in photos %}
+			<a href="{{ photo.image.url }}" rel="lightbox[set1]" title="{{ photo.description }}">
+				<img src="{{ photo|get_thumbnail }}" alt="{{ photo.description }}" class="photo_thumb rc12"/>
+			</a>
+			{% endfor %}
+		</div>
+		{% endif %}
+
+</div>
+	
+{% endblock %}

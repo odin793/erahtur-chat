@@ -1,0 +1,146 @@
+{% extends 'erahtur_main.html' %}
+{% load navbar %}
+{% block title %}
+<title>Ерахтур - {{ user.username }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="user_content_wrapper">
+
+	<form method='POST' enctype="multipart/form-data" action='.' id="profile_form">
+	<h3 class="user_profile_name">Профиль пользователя {{ user.username }}</h3>	
+	{% with user.get_profile as profile %}
+		<div class="avatar_image">
+		{% if profile.avatar %}
+			<img src="{{ profile.avatar|get_thumbnail }}" id="avatar_image">
+			<br>
+			<a href='#' id="change_avatar">Изменить аватар</a>
+		{% endif %}
+		</div>
+		
+
+		<table id="profile_form_table" cellspacing="5px">
+
+			{% if profile.avatar %}
+			<tr class="new_avatar">
+				<td class="label">
+					<label id="for_id_avatar_new">Новый аватар:</label>
+				</td>
+				<td>
+					<input type="file" id="id_avatar_new" name="avatar" />
+				</td>
+			</tr>		
+			
+			{% else %}
+			<tr>
+				<td class="label">	
+					{{ form.avatar.errors }}
+					<label for="id_avatar">Аватар:</label>
+				</td>		
+				<td class="value">
+				{{ form.avatar }}
+				</td>
+			</tr>
+			{% endif %}	
+
+			<tr>
+				<td class="label">
+					{{ form.last_name.errors }}
+					<label for="id_last_name">Фамилия:</label>
+				</td>
+				<td class="value">
+					<span>{{ form.last_name }}</span>
+				</td>
+			</tr>
+	
+			<tr>
+				<td class="label">
+					{{ form.first_name.errors }}
+					<label for="id_first_name">Имя:</label>
+				</td>
+				<td class="value">
+					<span>{{ form.first_name }}</span>
+				</td>
+			</tr>
+	
+			<tr>
+				<td class="label">
+					{{ form.patronymic.errors }}
+					<label for="id_patronymic">Отчество:</label>
+				</td>
+				<td class="value">
+					<span>{{ form.patronymic }}</span>
+				</td>
+			</tr>
+	
+			<tr>	
+				<td class="label">
+					{{ form.icq.errors }}
+					<label for="id_icq">ICQ:</label>
+				</td>
+				<td class="value">	
+					{{ form.icq }}
+				</td>
+			</tr>
+	
+			<tr>
+				<td class="label phone_cell">
+					{{ form.phone.errors }}
+					<label for="id_phone">Телефон:</label>
+				</td>
+				<td class="value">
+					{% for phone in phones_list %}
+						<p><input class="phone" type="text" name="phone" maxlength="20" value="{{ phone }}"></p>
+					{% empty %}
+						<p><input class="phone" type="text" name="phone" maxlength="20"></p>
+					{% endfor %}
+					<a class="add_phone no_decor active_font" href="#">+</a>
+				</td>
+			</tr>
+	
+			<tr>
+				<td class="label">
+					{{ form.location.errors }}
+					<label for="id_location">Место жительства:</label>
+				</td>
+				<td class="value">
+					{{ form.location }}
+				</td>
+			</tr>
+	
+			<tr>
+				<td class="label">
+				<div class="field_wrapper">Дата рождения:</div>
+				</td>
+				<td class="value">
+				<div class="field_wrapper">
+					{{ form.year.errors }}
+					{{ form.month.errors }}
+					{{ form.day.errors }}
+					<span>{{ form.year }} 	{{ form.month }} 	{{ form.day }}</span>
+				</div>
+				</td>
+			</tr>
+	
+			<tr>
+				<td class="label site_cell">
+					{{ form.sites.errors }}
+					<label for="id_site">Сайт:</label>
+				</td>
+				<td class="value">
+					{% for site in sites_list %}
+						<p><input class="site" type="text" name="site" maxlength="60" value="{{ site }}"></p>
+					{% empty %}
+						<p><input class="site" type="text" name="site" maxlength="60"></p>
+					{% endfor %}
+					<a class="add_site no_decor active_font" href="#">+</a>
+					
+				</td>
+			</tr>
+		</table>
+		<input type='submit' value='Сохранить профиль' class="profile_form_submit" />
+	{% endwith %}
+	</form>
+</div>
+
+{% endblock %}

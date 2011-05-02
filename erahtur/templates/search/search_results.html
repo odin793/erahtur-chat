@@ -1,0 +1,40 @@
+{% extends 'erahtur_main.html' %}
+{% block title %}
+<title>Ерахтур - поиск</title>
+{% endblock %}
+{% block content %}
+<div class="content_wrapper">
+	<h3 class="search_title">Результаты поиска по запросу: <span>{{ query }}</span></h3>
+	<div id="search_results">
+
+		{% for result, texts in search_dict.items %}
+		<ul class="search_result">
+			<li class="pub_title"><a href="{% url publication result.id %}">{{ texts.0|safe }}</a></li>
+			<li>
+				{% for  block in texts.1 %}
+					{{ block|safe }}
+					<br />
+				{% endfor %}
+			</li>
+			
+			{% comment %}
+			<li>{{ result.content|safe }}</li>
+			{% endcomment %}
+			
+			<li class="main_results">
+				{% for block in texts.2 %}
+					{{ block|safe }}
+					<br />
+				{% endfor %}
+			</li>
+			
+			<li class="date">{{ result.date }}</li>
+		</ul>
+
+		{% empty %}
+			<h4>Мы ничего не нашли</h4>
+		{% endfor %}
+
+	</div>
+</div>
+{% endblock %}

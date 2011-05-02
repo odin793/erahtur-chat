@@ -1,0 +1,53 @@
+{% extends "erahtur_main.html" %}
+{% load navbar %}
+{% block title %}
+<title>Ерахтур - {{ tag.name }}</title>
+{% endblock %}
+{% block content %}
+
+<div class="content_wrapper">
+	
+			{% if pub_list %}
+			<h2 style="text-align: center;"><span class="active_font">{{ tag.name }}</span></h2>
+			{% for tuple in pub_list %}				
+				<div class="publication">
+					<p class="title">							
+						<a href="{% url publication tuple.0.id %}">{{ tuple.0.title }}</a>
+					</p>
+					<div class="entry"> {{ tuple.0.preface|safe }} </div>
+					{% comment %}
+					<p class="date">{{ tuple.0.date|pytils_date }}, {{ tuple.0.date|date:"H:i" }}</p>
+					{% endcomment %}
+					<a href='{% url publication tuple.0.id %}' class="read">→</a>
+					{% comment %}
+					<span>(слов: {{ tuple.1.0 }}, фото: {{ tuple.1.1 }})</span>
+					{% endcomment %}
+					<div class="pub_statistics rc4">
+						<div class="pub_date">
+							<span>{{ tuple.0.date|pytils_date }}, {{ tuple.0.date|date:"H:i" }}</span>
+						</div>
+						<div class="pub_words">
+							<span>слов:  <span class="active_font">{{ tuple.1.0 }}</span></span>
+						</div>
+						<div class="pub_photos">
+							<span>фото: <span class="active_font">{{ tuple.1.1 }}</span></span>
+						</div>
+						<div class="pub_comments">
+							<span>комментариев: <span class="active_font">{{ tuple.1.2 }}</span></span>
+						</div>
+					</div>
+					<br class="clear">
+					<div class="pub_tags">
+						{% for tag in tuple.0.get_tags %}
+							<div class="pub_tag"><a href="{% url pubs_by_tag tag.id %}">{{ tag.name|cut:" " }}</a></div>
+						{% endfor %}
+					</div>
+					<br class="clear">
+					<p class="spacer"></p>
+				</div>
+			{% endfor %}			
+		{% else %}
+			<h3>Тут пока ничего нет. Попробуйте посмотреть на более ранних страницах</h3>
+		{% endif %}		
+	</div>
+{% endblock %}

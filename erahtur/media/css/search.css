@@ -1,0 +1,39 @@
+.search_title span {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.search_result {
+    margin: 20px 0;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.search_result .pub_title {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.search_result .pub_title a {
+    text-decoration: none;
+    color: #414141;
+}
+
+.search_result .date {
+    font-size: 16px;
+}
+
+.search_result .main_results {
+    margin-bottom: 8px;
+}
+
+div#search {
+    padding: 10px 0 0 10px;
+}
+
+div#search form input {
+    font-size: 12px;
+}

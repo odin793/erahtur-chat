@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		{% block title %}{% endblock %}
+		{% load navbar %}
+		{% load tagging_tags %}
+		<link rel="stylesheet" href="{{ MEDIA_URL }}css/mediaboxAdvBlack21.css" type="text/css" media="screen">
+		{% comment %}
+		<link rel='stylesheet' type='text/css' href='{{ MEDIA_URL }}css/styles.css'></link>
+		{% endcomment %}
+		<link rel='stylesheet' type='text/css' href='{{ MEDIA_URL }}css/layout.css'></link>
+		<link rel='stylesheet' type='text/css' href='{{ MEDIA_URL }}css/navbar.css'></link>
+		<link rel='stylesheet' type='text/css' href='{{ MEDIA_URL }}css/tabs.css'></link>
+		<link rel='stylesheet' type='text/css' href='{{ MEDIA_URL }}css/publication.css'></link>
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/sidebar.css"></link>
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/diff_content.css"></link>
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/search.css"></link>
+		<script type='text/javascript' src='{{ MEDIA_URL }}js/mootools-1.2.4-core-yc.js'></script>
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/mediaboxAdv-1.3.4b.js"></script>
+		{% block extrahead %}{% endblock %}
+		<script type='text/javascript' src='{{ MEDIA_URL }}js/navbar.js'></script>
+		{% comment %}
+		<script type='text/javascript' src='{{ MEDIA_URL }}js/mooImageLayer.js'></script>
+		{% endcomment %}
+		<script type='text/javascript' src='{{ MEDIA_URL }}js/mootools-1.2.4.4-more.js'></script>
+		<script type='text/javascript' src='{{ MEDIA_URL }}js/registration.js'></script>
+	</head>
+	
+	<body>
+		<div id="wrapper">
+			<div id="header">
+				<h1>Ерахтур</h1>
+			</div>
+			<div id='navbar'>
+				<ul>
+					{% navbar %}
+				</ul>
+			</div>
+			<div id="middle">
+				<div id="container">
+					<div id="content">
+						{% block content %}
+						{% endblock %}
+					</div>
+				</div>
+				<div id="sidebar">					
+					{% comment %}
+						<div id="accordion">
+						{% for year, months in date_pairs_processor.items %}
+							<h3 class="toggler">Год {{ year }}</h3>
+							<div class="element">
+								<ul>
+								{% for month in months %}
+									<li>
+										<a href="{% url pub_archive_months year month %}">{{ month|month_name }}</a>
+									</li>
+								{% endfor %}
+								</ul>
+							</div>
+						{% endfor %}
+						</div>
+					{% endcomment %}
+					<div class="sidebar_wrapper">
+						<h3 class="title">Архив новостей</h3>
+						<div class="archive">
+						{% if date_pairs_processor %}
+							{% for year, months in date_pairs_processor.items %}
+								<h3 class="archive_year">Год {{ year }}</h3>
+								<div>
+									<ul>
+									{% for month in months %}
+										<li>
+											<a href="{% url pub_archive_months year month %}">{{ month|month_name }}</a>
+										</li>
+									{% endfor %}
+									</ul>
+								</div>
+							{% endfor %}
+						{% else %}
+							<p>Архив пока пуст</p>
+						{% endif %}
+						</div>
+					</div>
+
+					<div class="sidebar_wrapper">
+						<div class="tag_cloud">
+						{% tag_cloud_for_model village.Publication as tags with min_count=3 distribution=linear steps=10 %}
+				    {% for tag in tags %}
+							{% ifequal tag.font_size 10 %}
+				    		<a class="cloud_tag" href="{% url pubs_by_tag tag.id %}" style="font-size: 2em">
+									{{ tag.name|cut:" " }}
+								</a>
+							{% else %}
+								<a class="cloud_tag" href="{% url pubs_by_tag tag.id %}" style="font-size: 1.{{ tag.font_size }}em">
+									{{ tag.name|cut:" " }}
+								</a>
+							{% endifequal %}														
+				    {% endfor %}
+						</div>
+					</div>
+				</div>
+					
+			</div>
+			<div id="before_footer"></div>
+		</div>
+
+		<div id="footer">
+			
+			<div id="search">
+				<form action="{% url search %}">
+					<label for="id_search">Поиск:</label>
+					<input name="id_search" type="text" />
+				</form>
+			</div>
+			
+			{% if user.is_authenticated %}			
+				<div class="username">
+					<a href='/accounts/user_profile/{{ user.username }}'>
+						{{ user.username }}
+					</a> 
+					{% if user.is_superuser %} <span>(superuser)</span> {% endif %}
+				</div>
+				<form id="hidden_chat_form" method="POST" action="http://127.0.0.1:8001/" target="_blank">
+					<input type="text" name="nickname" value="{{ user.username }}" />
+					<input type="text" name="chat_auth_token" value="{% chat_auth_token user %}" />
+					<input type="submit">
+				</form>
+				<div class="logout_form">
+					<form action="/accounts/logout">
+						<input type="submit" value="Выход">
+					</form>
+				</div>
+			{% else %}
+		  	<div class="login_form">
+			    {% if login_error %}
+						<form action="/accounts/log_in/" method="POST">
+				  		<p>              
+								<input class="login" type="text" name="username" value="login" 
+								size="12" style="background: #A60000; border: none;">
+			  	  		<input class="password" type="password" name="password" value="password" 
+								size="12" style="background: #A60000; border: none">
+			  	  	</p>  
+				  	  <input class="login_button" type="submit" value="Вход">
+						</form>
+					{% else %}
+						<form action="/accounts/log_in/" method="POST">
+				  		<p>              
+								<input class="login" type="text" name="username" value="login" size="12">
+			  	  		<input class="password" type="password" name="password" value="password" size="12">
+			  	  	</p>  
+				  	  <input class="login_button" type="submit" value="Вход">
+						</form>
+					{% endif %}
+					<span class="registration">
+						<a href="/accounts/registration/">Регистрация</a>
+					</span>
+				</div>
+			{% endif %}	
+		</div>
+	
+	</body>
+</html>

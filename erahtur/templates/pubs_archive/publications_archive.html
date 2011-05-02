@@ -1,0 +1,29 @@
+{% extends 'erahtur_main.html' %}
+{% load navbar %}
+{% block title %}
+<title>Ерахтур - архив</title>
+{% endblock %}
+
+{% block content %}
+	<div class="content_wrapper">
+		<h3 class="title">Новости / <span class="active_font">Архив</span></h3>
+		<div class="archive" id="accordion">
+		{% if dict %}
+			{% for year, months in dict.items %}
+				<h3 class="archive_year toggler">Год {{ year }}</h3>
+				<div class="element">
+					<ul>
+					{% for month in months %}
+						<li>
+							<a href="{% url pub_archive_months year month %}">{{ month|month_name }}</a>
+						</li>
+					{% endfor %}
+					</ul>
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>Архив пока пуст</p>
+		{% endif %}
+  </div>
+</div>
+{% endblock %}

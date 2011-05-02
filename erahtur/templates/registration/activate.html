@@ -1,0 +1,8 @@
+{% extends "erahtur_main.html" %}
+
+{% block content %}
+<h3>Активация</h3>
+Привет, {{ account }}!<br/>
+Ваша учетная запись активирована. <a href="{% url auth_login %}">Заходите</a> на сайт.
+<br/><br/>
+{% endblock %}

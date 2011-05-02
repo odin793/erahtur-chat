@@ -1,0 +1,38 @@
+{% extends 'erahtur_main.html' %}
+{% load navbar %}
+{% block title %}
+<title>Ерахтур - фото</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="publication_wrapper">
+{% for album, key_photo in data %}
+	<div class="publication">
+		<div class="title">
+			<a href="{% url photoalbum album.id %}">{{ album.name }}</a>
+		</div>
+		<div class="entry">{{ album.description }}</div>
+		<div class="key_photo">
+			<a href="{% url photoalbum album.id %}"><img src="{{ key_photo|get_thumbnail }}" /></a>
+		</div>
+		<a href='{% url photoalbum album.id %}' class="read">→</a>
+	</div>
+			
+		{% comment %}
+		<table class="photos_table">
+			<tr>
+				<td>
+					<a href="{% url photoalbum album.id %}"><img src="{{ key_photo|get_thumbnail }}"></a>
+				</td>
+				<td class="comment">
+					
+				</td>
+			</tr>
+		</table>
+		{% endcomment %}
+	
+{% endfor %}
+</div>
+
+{% endblock %}

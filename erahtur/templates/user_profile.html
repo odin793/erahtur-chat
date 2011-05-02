@@ -1,0 +1,71 @@
+{% extends 'erahtur_main.html' %}
+{% load navbar %}
+{% block title %}
+<title>Ерахтур - {{ prof_user }}</title>
+{% endblock %}
+
+
+{% block content %}
+<div class='user_content_wrapper'>
+	<h3 class="user_profile_name">Профиль пользователя {{ prof_user }}</h3>
+	{% if profile %}
+	<ul class="user_profile_ul">
+		{% if profile.avatar %}
+		<li>
+			<a href="{{ profile.avatar.url }}" rel="lightbox[set1]" title="{{ prof_user }}">
+				<img src="{{ profile.avatar|get_thumbnail }}" alt="{{ prof_user }}" class="photo_thumb rc12" />
+			</a>
+		</li>
+		{% endif %}
+		
+		{% comment %}
+		{% if profile.first_name %}
+		<li>Имя: {{ profile.first_name }}</li>
+		{% endif %}
+		{% endcomment %}
+		
+		{% if profile.last_name %}
+		<li>{{ profile.last_name }} {{ profile.first_name }} {{ profile.patronymic }}</li>
+		{% endif %}
+		
+		{% comment %}		
+		{% if profile.patronymic %}
+		<li>Отчество: {{ profile.patronymic }}</li>
+		{% endif %}
+		{% endcomment %}
+		
+		{% if profile.birth_date %}
+		<li>{{ profile.birth_date }}</li>
+		{% endif %}
+		
+		{% if profile.location %}
+		<li>{{ profile.location }}</li>
+		{% endif %}
+		
+		{% for phone in phones_list %}
+		<li>{{ phone|phone_repr }}</li>
+		{% endfor %}
+		
+		{% if profile.icq %}
+		<li>ICQ: {{ profile.icq }}</li>
+		{% endif %}
+				
+		{% for site in sites_list %}
+			<li><a href='{{ site|get_url }}'>{{ site }}</a></li>
+		{% endfor %}
+		
+		{% if logged_in %}
+			<li><a href='/accounts/user_profile_handle/' id="edit_profile">Редактировать профиль</a></li>
+		{% endif %}
+		
+	</ul>
+	{% else %}
+		{% if logged_in %}
+			<a href='/accounts/user_profile_handle/' id="edit_profile">Заполнить профиль</a>
+		{% else %}
+			<h3>Пользователь не заполнил свой профиль</h3>
+		{% endif %}
+	{% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'erahtur_main.html' %}
+{% load navbar %}
+{% block title %}
+<title>Ерахтур - фото</title>
+{% endblock %}
+
+{% block content %}
+
+<div class='publication_wrapper'>
+{% comment %}
+	<h3>{{ album.name }}</h3>
+	<table class="photos_table">
+	{% for photo in photos %}
+			<tr>
+				<td>
+					<a class='mil-imagelink' href='{{ photo.image.url }}'><img src='{{ photo|get_thumbnail }}'></a>
+				</td>
+				<td class="comment">
+					<span>{{ photo.description }}</span>
+				</td>
+			</tr>
+	{% endfor %}
+	</table>
+</div>
+{% endcomment %}
+
+{% if photos %}
+<div id="photos_block_title">
+	 {{ album.name }}{% comment %}(<span class="active_font">{{ photos|length }}</span>){% endcomment %}
+</div>
+<div id="photos_block">
+	{% for photo in photos %}
+	<a href="{{ photo.image.url }}" rel="lightbox[set1]" title="{{ photo.description }}">
+		<img src="{{ photo|get_thumbnail }}" alt="{{ photo.description }}" class="photo_thumb rc12"/>
+	</a>
+	{% endfor %}
+</div>
+{% endif %}
+</div>
+
+{% endblock %}
+

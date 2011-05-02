@@ -1,0 +1,81 @@
+{% extends "forum_base.html" %}
+{% load i18n %}
+{% block title %}{{ forum.title }}: {{ thread.title|escape }}{% endblock %}
+
+{% block pagetitle %}
+	{% comment %}
+	{{ forum.title }} &raquo; {{ thread.title|escape }}
+	{% endcomment %}
+	{{ thread.title|escape }}
+{% endblock %}
+
+
+{% block breadcrumbs %}
+	{% for title, url in thread.forum.get_url_name %} 
+		&raquo; 
+		<a href='{{ url }}'>{{ title }}</a>
+	{% endfor %} 
+	&raquo; 
+	<a href='{{ thread.get_absolute_url }}'>{{ thread.title|escape }}</a> 
+	( сообщений: {{ thread.posts }} )
+{% endblock %}
+
+{% block content %}
+
+<table id='djangoForumThreadPosts'>
+{% for post in post_list %}
+
+<tr>
+	<th class='djangoForumThreadPostDetail' id='post{{ post.id }}'>
+		{{ post.time|timesince }} назад
+		<br />
+ 		<strong><a href="/accounts/user_profile/{{ post.author }}">{{ post.author }}</a></strong>
+	</th>
+<td>{{ post.body_html|safe }}</td>
+</tr>{% endfor %}
+
+</table>
+
+{% if is_paginated %}
+<ul>
+  <li class="djangoForumPagination">
+		Страницы: <a href="?page=1">первая</a>
+	</li>
+{% for page_number in paginator.page_range %}
+  <li class="djangoForumPagination">
+		<a href="?page={{ page_number }}">{{ page_number }}</a>
+	</li>  
+{% endfor %}
+  <li class="djangoForumPagination">
+		<a href="?page={{ paginator.num_pages }}">последняя</a>
+	</li>  
+</ul>
+{% endif %}
+
+{% if user.is_authenticated %}
+{% comment %}
+	<p>
+		<a href="{% url forum_subscriptions %}?next={{ request.path }}">Обновить подписки</a>
+	</p>
+{% endcomment %}
+	<h2>Написать сообщение</h2>
+{% endif %}
+
+
+{% if thread.closed %}
+	<p>Извините, эта тема закрыта. Сообщения больше не принимаются</p>
+{% else %}
+
+	{% if user.is_authenticated %}
+		<form method='post' action='reply/'>
+			<p>	<span>Автор: <strong>{{ user.username }}</strong></span> </p>
+			{{ form.as_p }}
+			<input type='submit' value="Написать" />
+		</form>
+	{% else %}
+		<h2>Пожалуйста, <a href="{% url login_page %}?where={{ thread.get_absolute_url }}">войдите</a>, чтобы написать сообщение</h2>
+	{% endif %}
+
+{% endif %}
+
+{% endblock %}

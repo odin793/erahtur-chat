@@ -1,0 +1,9 @@
+*.pyc
+*_thumbnail.jpg
+erahtur/media/photos/*
+erahtur/media/music/*
+*.ico
+erahtur/erahtur_db
+erahtur/settings_local.py
+tornado-chat/settings_local.py
+tornado-chat/venv

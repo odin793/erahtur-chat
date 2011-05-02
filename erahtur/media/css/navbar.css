@@ -1,0 +1,86 @@
+#navbar ul li {
+    border-right: 1px solid white;
+}
+
+#navbar ul li:hover ul li {
+    border: none;
+}
+
+#navbar a {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+#navbar a:hover {
+    color: white;
+}
+
+#navbar li ul { /* drop down ul*/
+    z-index: 1;
+    display: none;
+    /*opacity: 0;*/
+    /*height: 0px;*/
+    overflow: hidden;
+    position: absolute;
+}
+
+#navbar li:hover ul {
+    display: block;
+}
+
+#navbar li li {
+    display: block;
+    float: none;
+}
+
+#navbar li {
+    float: left;
+    line-height: 40px;
+    font: bold 1em;
+    width: 135px;
+    /*background: #BF3030;*/
+    background: #d1d1d1;
+}
+
+#navbar ul li:hover {
+    background-color: #f87676;
+    /*font-family: Helvetica;*/
+}
+
+#navbar ul li ul li:hover {
+    background-color: #f87676;
+    font-family: Arial;
+}
+
+#navbar .first { /* first element in menu has only left top round corner */
+    -webkit-border-top-left-radius: 12px;
+    -moz-border-radius-topleft: 12px;
+    border-top-left-radius: 12px;
+}
+
+#navbar .last { /* last element in menu has only right top round corner */
+    border: none;
+    -webkit-border-top-right-radius: 12px;
+    -moz-border-radius-topright: 12px;
+    border-top-right-radius: 12px;
+}
+
+#navbar .active_tab {
+    background: #f87676;
+}
+
+#navbar .active_link {
+    color: white;
+}
+
+#navbar ul li:hover ul li.dropdown_li_last { /* last element in dropdown ul */
+    -webkit-border-bottom-right-radius: 12px;
+    -webkit-border-bottom-left-radius: 12px;
+    -moz-border-radius-bottomright: 12px;
+    -moz-border-radius-bottomleft: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+
+}

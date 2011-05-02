@@ -1,0 +1,49 @@
+{% extends 'erahtur_main.html' %}
+{% block title %}
+<title>Ерахтур - музыка</title>
+{% endblock %}
+
+{% block content %}
+<div class="content_wrapper">
+<table class='songs_table'>
+
+	<tr class="top">
+		<td>Трек</td>
+		<td>Название</td>
+		<td>Исполнитель</td>
+		<td>Год</td>
+	</tr>
+	{% for song in songs_list %}
+	<tr class="{% cycle 'row2' 'row1' %}">
+		<td>
+			<script language="JavaScript" src="{{ MEDIA_URL }}audio/audio-player.js"></script>
+
+			<p class='player'>
+				<object type="application/x-shockwave-flash" data="{{ MEDIA_URL }}audio/player.swf" id="audioplayer{{ counter }}" height="24" width="290">
+			<param name="movie" value="{{ MEDIA_URL }}audio/player.swf">
+			<param name="FlashVars" value="playerID=audioplayer1&soundFile={{ song.song.url }}">
+			<param name="quality" value="high">
+			<param name="menu" value="false">
+			<param name="wmode" value="transparent">
+			</object>
+			</p>
+			
+			{% comment %}
+			<p class="player">
+				<object type="application/x-shockwave-flash" data="{{ MEDIA_URL }}audio/dewplayer-bubble.swf" width="200" height="40" id="dewplayer" name="dewplayer">
+				<param name="wmode" value="transparent" />
+				<param name="movie" value="{{ MEDIA_URL }}audio/dewplayer-bubble.swf" />
+				<param name="flashvars" value="mp3={{ song.song.url }}&amp;volume=70" />
+				</object>
+			</p>
+			{% endcomment %}	
+		</td>
+		<td>{{ song.name }}</td>
+		<td>{% if song.artist %} {{ song.artist }} {% else %} VA {% endif %}</td>
+		<td class="year">{% if song.year %}  {{ song.year }} {% endif %}</td>
+	</tr>
+	{% endfor %}
+
+</table>
+</div>
+{% endblock %}

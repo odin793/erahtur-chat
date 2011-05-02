@@ -1,0 +1,74 @@
+ ul#pub_block {
+    height: 350px;
+    overflow: hidden;
+    list-style: none;
+    padding: 0px;
+}
+
+ul#pub_block:hover {
+    overflow-y: scroll;
+}
+ul#pub_block li {
+    padding: 5px;
+    margin: 0 5px 0 5px;
+    text-align: left;
+}
+    
+table#songs_list {
+    padding: 0px;
+    margin: 10px;
+    width: 95%;
+    align: center;
+    cellpadding: 10px;
+    cellspacing: 0px;
+}
+
+table#songs_list td {
+    line-height: 25px;
+    text-align: center;
+}
+table#songs_list p {
+    padding-top: 5px;
+    margin: 5px;
+}
+
+/* imagelayer */
+
+.mil-imagelink img { 
+    border: 1px solid #808080; 
+    -moz-box-shadow: 2px 2px 8px #C2C2C2; 
+    -webkit-box-shadow: 2px 2px 8px #C2C2C2; 
+    box-shadow: 2px 2px 8px #C2C2C2; 
+} 
+ 
+.mil-bg { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    height: 100%; 
+    width: 100%; 
+    background-color: #333333; 
+    opacity: 0.7; 
+    z-index: 10000; 
+} 
+ 
+.mil-bg-loading { 
+    position: absolute; 
+    width: 100%; 
+    color: white; 
+    font: bold 16px sans-serif; 
+    text-align: center; 
+    background-color: black; 
+    padding: 5px 0px; 
+} 
+ 
+.mil-img { 
+    cursor: pointer; 
+    position: absolute; 
+    top: 0; 
+    z-index: 10001; 
+    border: 1px solid black; 
+    -moz-box-shadow: 0px 0px 20px #D9D9D9; 
+    -webkit-box-shadow: 0px 0px 20px #D9D9D9; 
+    box-shadow: 0px 0px 20px #D9D9D9; 
+}

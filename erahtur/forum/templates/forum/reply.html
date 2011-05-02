@@ -1,0 +1,35 @@
+{% extends "forum_base.html" %}
+{% load i18n %}
+
+{% block title %}Написать сообщение в теме "{{ thread.title }}"{% endblock %}
+
+{% block pagetitle %}Написать сообщение в теме "{{ thread.title }}"{% endblock %}
+
+{% block breadcrumbs %}
+	{% for title, url in thread.forum.get_url_name %} 
+		&raquo; 
+		<a href='{{ url }}'>{{ title }}</a>
+	{% endfor %} 
+	&raquo; 
+	<a href='{{ thread.get_absolute_url }}'>{{ thread.title|escape }}</a> 
+	&raquo;
+	Написать сообщение
+{% endblock %}
+
+
+{% block content %}
+
+<h2>Написать сообщение в теме</h2>
+<form method='post' action='./'>
+
+{% comment %}
+{% csrf_token %}
+{% if form.errors %}<ul>{{ form.errors.as_ul }}</ul>{% endif %}
+{% endcomment %}
+
+<p><span>Автор: <strong>{{ user.username }}</strong></span></p>
+{{ form.as_p }}
+<p><input type='submit' value="Написать" /></p>
+</form>
+
+{% endblock %}

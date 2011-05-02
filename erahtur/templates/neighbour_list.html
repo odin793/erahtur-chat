@@ -1,0 +1,14 @@
+{% extends 'erahtur_main.html' %}
+{% block title %}
+<title>Ерахтур - соседи</title>
+{% endblock %}
+{% block content %}
+<div class='content_wrapper'>
+	<h3>Cоседи</h3>
+	<ul id='neighbour_list'>
+	{% for n in neighbour_list %}
+		<li><a href='{% url neighbour n.id %}'>{{ n.name }}</a></li>
+	{% endfor %}
+	</ul>
+</div>
+{% endblock %}

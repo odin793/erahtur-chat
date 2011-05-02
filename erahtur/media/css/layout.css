@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100%;
+}
+
+body {
+    width: 95%;
+    height: 100%;
+    background: #E5E4E3;
+    position: relative;
+}
+
+img {
+    border: none;
+}
+
+ul {
+    list-style: none;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    font-weight: bold;
+}
+
+#wrapper {
+    width: 1000px;
+    margin: 0 auto -65px;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    background: white;
+    border-right: 1px solid #ACABAA;
+}
+
+/* Header
+----------------------------------------- */
+
+#header {
+    height: 80px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Navigation bar or navbar
+----------------------------------------- */
+
+#navbar {
+    width: 955px;
+    margin: 5px 20px 0 23px;
+    height: 45px;
+    font-family: Arial;
+}
+
+/* middle
+----------------------------------------- */
+
+#middle {
+    width: 100%;
+    padding: 0 0 70px;
+    height: 1%;
+}
+
+#middle:after {
+    content: '.';
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+}
+
+#container {
+    width: 100%;
+    float: left;
+    background: white;
+}
+
+#content {
+    margin-top: 40px;
+    padding: 0 230px 0 10px;
+}
+
+/* Footer
+----------------------------------------- */
+
+#before_footer {
+    height: 65px;
+}
+
+#footer {
+    width: 1000px;
+    margin: -65px auto 0;
+    height: 65px;
+    position: relative;
+    bottom: 0;
+    background: #ACACA3;
+    -webkit-border-top-left-radius: 12px;
+    -webkit-border-top-right-radius: 12px;
+    -moz-border-radius-topleft: 12px;
+    -moz-border-radius-topright: 12px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    font-family: Arial;
+}
+
+#footer .username {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+}
+
+#footer .login_form {
+    position: absolute;
+    right: 20px;
+    top: 8px;    
+}
+
+#footer .login_form input {
+    text-align: center;
+    font-size: 12px;
+}
+
+#footer .login_button {
+    position: absolute;
+    top: 30px;
+}
+
+#footer .registration a {
+    text-decoration: underline;
+    color: #000;
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    font-size: 16px;
+    width: 85px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+#footer .logout_form {
+    position: absolute;
+    right: 30px;
+    top: 32px;
+}

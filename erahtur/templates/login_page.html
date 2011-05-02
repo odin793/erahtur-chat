@@ -1,0 +1,32 @@
+{% extends "erahtur_main.html" %}
+
+{% block content %}
+<div class="content_wrapper">
+	<div id="login_page">
+		
+		<h2>Вход на сайт</h2>
+		
+		<div class="login_form">
+		  {% if login_errors %}
+			<form action="{% url login_page %}?where={{ where }}" method="POST" class="login_page_form">
+		 		<p>              
+					<input class="login" type="text" name="username" value="login" 
+					size="12" style="background: #A60000; border: none;">
+			  	<input class="password" type="password" name="password" value="password" 
+					size="12" style="background: #A60000; border: none">
+			  	</p>  
+		 	  <input class="login_button" type="submit" value="Вход">
+			</form>
+		{% else %}
+			<form action="{% url login_page %}?where={{ where }}" method="POST" class="login_page_form">
+		 		<p>              
+					<input class="login" type="text" name="username" value="login" size="12">
+			  	<input class="password" type="password" name="password" value="password" size="12">
+			  	</p>  
+		 	  <input class="login_button" type="submit" value="Вход">
+			</form>
+		{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
