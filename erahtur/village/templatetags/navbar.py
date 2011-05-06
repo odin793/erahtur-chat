@@ -24,6 +24,11 @@ def navbar():
         'neighbour_list': neighbour_list
     }
 
+@register.simple_tag
+def chat_host_name():
+    chat_host_name = settings.CHAT_HOST_NAME
+    return chat_host_name
+
 @register.filter(name = 'get_thumbnail')
 def get_thumbnail(photo):
     if isinstance(photo, ImageFieldFile): # photo can be object from models or an image

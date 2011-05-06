@@ -121,7 +121,7 @@
 					</a> 
 					{% if user.is_superuser %} <span>(superuser)</span> {% endif %}
 				</div>
-				<form id="hidden_chat_form" method="POST" action="http://127.0.0.1:8001/" target="_blank">
+				<form id="hidden_chat_form" method="POST" action="{% chat_host_name %}" target="_blank">
 					<input type="text" name="nickname" value="{{ user.username }}" />
 					<input type="text" name="chat_auth_token" value="{% chat_auth_token user %}" />
 					<input type="submit">

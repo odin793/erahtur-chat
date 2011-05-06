@@ -108,7 +108,6 @@ MIDDLEWARE_CLASSES = (
     #'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-DATE_FRoMAT = ('%d.%b.%y') #Locale’s appropriate date representation.
 
 ROOT_URLCONF = 'erahtur.urls'
 
