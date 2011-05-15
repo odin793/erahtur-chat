@@ -170,7 +170,4 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'info@google.ru'
 
-try:
-    from settings_local import *
-except ImportError:
-    pass
+from settings_local import *
