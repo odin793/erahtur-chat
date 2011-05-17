@@ -47,25 +47,14 @@ class Session(object) :
 
     def __init__(self, nick) :
         for v in self.SESSIONS.values() :
-            if v.nick == nick :
-                #return
-            #    raise "In use"
-                print 'already exist'
-                print Session.SESSIONS
+            if v.nick == nick : # user didn't logout correctly 
+                # delete old user's session
                 Session.remove(str(v.id))                
-
-                
-                #print 'deleted'    
-        #print [s.id for s in self.SESSIONS.values()]
-
-                
-                
-        self.nick = nick
+        self.nick = nick 
         Session.CUR_ID += 1
         self.id   = Session.CUR_ID 
 
-        Session.SESSIONS[str(self.id)] = self
-        #Session.SESSIONS[self.nick] = self
+        Session.SESSIONS[str(self.id)] = self # create new one
 
     def poke(self) :
         pass
