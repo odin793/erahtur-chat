@@ -5,9 +5,9 @@ NAME=tornado-chat
 LOG=/home/odin/logs/$NAME.log
 
 cd $DIR
-pid=$(ps ax | grep runtornado | grep -v grep | awk '{ print $1 }')
 
 function start {
+    pid=$(ps ax | grep runtornado | grep -v grep | awk '{ print $1 }')
     if [ "$pid" ]; then
         echo $NAME is already running
         return
@@ -18,6 +18,7 @@ function start {
 }
 
 function stop {
+    pid=$(ps ax | grep runtornado | grep -v grep | awk '{ print $1 }')
     case "$pid" in
     
         "") 
