@@ -72,12 +72,12 @@ Date.prototype.toRelativeTime = function(now_threshold) {
   var units = null;
   var conversions = {
     //millisecond: 1, // ms    -> ms
-    'секунд': 1000,   // ms    -> sec
-    'минут': 60,     // sec   -> min
-    'часов':   60,     // min   -> hour
-    'дней':    24,     // hour  -> day
-    'месяцев':  30,     // day   -> month (roughly)
-    'лет':   12      // month -> year
+    секунд: 1000,   // ms    -> sec
+    минут: 60,     // sec   -> min
+    часов:   60,     // min   -> hour
+    дней:    24,     // hour  -> day
+    месяцев:  30,     // day   -> month (roughly)
+    лет:   12      // month -> year
   };
   
   time_status = ""
