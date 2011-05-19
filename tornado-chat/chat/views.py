@@ -122,7 +122,7 @@ def join(request) :
                     'id' : session.id,
                     'nick': session.nick,
                     'rss': channel.size(), 
-                    'starttime': int(time.time())*1000,
+                    'starttime': int(time.time())*1000, # 1000 converts sec to mses for js's Date() class
             })
 
 def part(request) :

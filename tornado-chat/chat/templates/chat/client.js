@@ -125,8 +125,8 @@ function userJoin(nick, timestamp) {
   //if we already know about this user, ignore it
   for (var i = 0; i < nicks.length; i++)
       if (nicks[i] == nick) {
-          return;
-          //nicks.splice(i,1);
+          //return;
+          nicks.splice(i,1);
       }
   //otherwise, add the user to the list and
   //put it in the stream
