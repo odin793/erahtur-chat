@@ -3,6 +3,22 @@
     font-family: Arial;    
 }
 
+#center_list {
+    text-align: left;
+}
+
+#center_list h3 {
+    text-align: center;
+}
+
+#center_list ul {
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    left: 70px;
+    width: 200px;
+}
+
 .user_content_wrapper {
     padding: 0px 20px 0px 15px;
     font-family: Arial;

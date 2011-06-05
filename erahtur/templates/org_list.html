@@ -4,11 +4,13 @@
 {% endblock %}
 {% block content %}
 <div class='content_wrapper'>
-	<h3>Организации</h3>
-	<ul id='org_list'>
-	{% for org in org_list %}
-		<li><a href='{% url organization org.id %}'>{{ org.name }}</a></li>
-	{% endfor %}
-	</ul>
+	<div id="center_list">
+		<h3>Организации</h3>
+		<ul id='org_list'>
+		{% for org in org_list %}
+			<li><a href='{% url organization org.id %}'>{{ org.name }}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
 </div>
 {% endblock %}

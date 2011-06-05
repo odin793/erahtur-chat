@@ -4,11 +4,13 @@
 {% endblock %}
 {% block content %}
 <div class='content_wrapper'>
-	<h3>История</h3>
-	<ul id='hist_list'>
-	{% for hist in hist_list %}
-		<li><a href='{% url history hist.id %}'>{{ hist.period }}</a></li>
-	{% endfor %}
-	</ul>
+	<div id="center_list">
+		<h3>История</h3>
+		<ul id='hist_list'>
+		{% for hist in hist_list %}
+			<li><a href='{% url history hist.id %}'>{{ hist.period }}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
 </div>
 {% endblock %}
