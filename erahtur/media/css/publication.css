@@ -2,7 +2,7 @@
 ----------------------------------------- */
 
 .publication_wrapper {
-    padding: 0 115px 0 15px;
+    padding: 0 50px 0 50px;
     font-family: Arial;
 }
 
@@ -46,7 +46,7 @@
 
 .publication .entry {
 	padding: 10px 0px 20px 0px;
-	padding-bottom: 5px;
+	padding-bottom: 0;
 	margin-bottom: 5px;
 	text-align: justify;
 }
@@ -58,7 +58,8 @@
 
 .publication .read {
     display: block;
-    padding: 5px 0;
+    margin-top: -5px;
+    padding-bottom: 5px;
     font-size: 25px;
     font-weight: bold;
     width: 30px;
@@ -81,6 +82,7 @@
     font-weight: 300px;
 }
 .pub_statistics div {
+    font-size: 13px;
     float: left;
     margin: 8px 8px;
 }

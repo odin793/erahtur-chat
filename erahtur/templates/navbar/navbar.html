@@ -23,16 +23,23 @@
 	<a href='{% url org_list %}' id="nb_organizations">Организации</a>
 	<ul class="dropdown">
 		{% for org in org_list %}
+			{% comment %}
 			{% if forloop.last %}
 				<li class="dropdown_li_last">
 					<a href='{% url organization org.id %}' class="nb3">{{ org.name }}</a>
 				</li>
 			{% else %}
+			{% endcomment %}
 				<li>
 					<a href='{% url organization org.id %}' class="nb3">{{ org.name }}</a>
 				</li>
-			{% endif %}				
+			{% comment %}
+			{% endif %}
+			{% endcomment %}				
 		{% endfor %}
+		<li class="dropdown_li_last">
+			<a href='{% url org_list %}' class="nb3">Прочие</a>
+		</li>
 	</ul>	
 </li>
 <li>

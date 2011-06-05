@@ -15,7 +15,7 @@ register = template.Library()
 
 @register.inclusion_tag('navbar/navbar.html')
 def navbar():
-    org_list = Organization.objects.all()
+    org_list = Organization.objects.all()[:10]
     hist_list = History.objects.all()
     neighbour_list = Neighbour.objects.all()
     return {
