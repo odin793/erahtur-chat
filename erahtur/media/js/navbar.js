@@ -11,8 +11,12 @@ document.addEvent('domready', function() {
 
 document.addEvent('domready', function() {
     
-    /* hightlights link in the navigation bar for the current url */
+    /* footer is on center of the window */
     
+    var x = Math.round((document.body.clientWidth-1000) / 2);
+    $('footer').setStyle('left', x + 'px');
+
+    /* hightlights link in the navigation bar for the current url */
     var pages = ['publications', 'history', 'organizations', 'neighbours', 'communications', 'creation', 'links'];
     current_location = window.location.pathname;
     pages.each(function(item, index) {
@@ -53,6 +57,12 @@ document.addEvent('domready', function() {
         if ($('hidden_chat_form') != undefined) {
             $('hidden_chat_form').submit();
         }
+    });
+    
+    /* window is resized. footer is still on center of the window */
+    window.addEvent('resize', function() {
+       x = Math.round((document.body.clientWidth-1000) / 2);
+       $('footer').setStyle('left', x + 'px')
     });
     
 });
