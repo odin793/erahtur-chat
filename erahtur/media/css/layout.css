@@ -53,8 +53,9 @@ h1 {
 ----------------------------------------- */
 
 #navbar {
-    width: 955px;
-    margin: 5px 20px 0 23px;
+    width: 1000px;
+    /*margin: 5px 20px 0 23px;*/
+    margin: 5px 0px 0 0px;
     height: 45px;
     font-family: Arial;
 }
