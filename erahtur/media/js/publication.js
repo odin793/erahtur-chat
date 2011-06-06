@@ -1,4 +1,7 @@
 document.addEvent('domready', function() {
+	
+	/*comment button is enabled or disabled*/
+	
 	if ($('comment_body') != undefined) {
     	$('comment_body').addEvent('keyup', function(e) {
         	if ($('comment_body').value != '') {
@@ -9,12 +12,5 @@ document.addEvent('domready', function() {
         		$('comment_body').value = '';
         	}
         });    
-    }    
+    };   
 });
-/*
-document.addEvent('domready', function() {
-    if ($('photos_block') != undefined) {
-        alert('photos');
-    };
-});
-*/
