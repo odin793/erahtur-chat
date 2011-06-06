@@ -51,7 +51,6 @@ document.addEvent('domready', function() {
     };
     
     /* hidden chat form */
-    
     $('go_to_chat').addEvent('click', function(e) {
         e.stop();
         if ($('hidden_chat_form') != undefined) {
@@ -65,4 +64,46 @@ document.addEvent('domready', function() {
        $('footer').setStyle('left', x + 'px')
     });
     
+    /* block of publication's content via ajax is injected to the page */
+    $$('.read').each(function(el, ind) {
+        el.addEvent('click', function(e) {
+            e.stop();
+            var pub_id = e.target.getProperty('id').split('-')[1];
+            link_element = $(e.target.getProperty('id')) // we will inject news block after this element            
+            if (link_element.getProperty('class') != 'read-down') { // if user didn't clicked on arrow yet or clicked twice
+                new Request({
+                    url: '/ajax_news_block/',
+                
+                    onSuccess: function(r) {                    
+                        var ajax_news_block = new Element('p', { // create new p for publication text
+                            styles: {
+                                opacity: '0',
+                            },
+                            id: 'ajax_news_block-' + pub_id,
+                        });
+                    
+                        // create inner html for news block                 
+                        ajax_news_block.set('html', r);
+                        ajax_news_block.inject(link_element, 'after');
+                    
+                        /* change arrow type and it's class */
+                        link_element.set('html', '&darr;');
+                        link_element.setProperty('class', 'read-down');
+                    
+                        var appearance_Fx = new Fx.Morph(ajax_news_block, {duration: 400,});
+                        appearance_Fx.start({
+                            'opacity': [0, 1],
+                        });
+                    },                
+                }).post({pub_id: pub_id});
+            }
+            
+            else { // arrow is already in down position and user clicked once again
+                $('ajax_news_block-' + pub_id).empty(); // delete ajax_news_block
+                /* change arrow type and it's class back to initial values */
+                link_element.set('html', '&rarr;');
+                link_element.setProperty('class', 'read');
+            };            
+        });
+    });
 });
