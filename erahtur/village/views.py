@@ -136,6 +136,23 @@ def publication(request, pub_id):   # page of publications
         'photos': photo_set,
     }))
 
+def ajax_news_block(request):
+    pub_id = request.POST.get('pub_id', '')
+    if pub_id:
+        try:
+            publication = Publication.objects.get(id=pub_id)
+            news_block = publication.content
+        except:
+            news_block = u'произошла ошибка'
+        return render_to_response('publications/ajax_news_block.html', {
+            'news_block': news_block,
+        })
+    else:
+        return render_to_response('publications/ajax_news_block.html', {
+            'news_block': u'произошла ошибка',
+        })
+        
+
 @login_required
 def add_comment(request, pub_id):   # add new comment to publication with pub_id
     if request.method == 'POST':
