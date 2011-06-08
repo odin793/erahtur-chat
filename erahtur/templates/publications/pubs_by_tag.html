@@ -18,7 +18,7 @@
 					{% comment %}
 					<p class="date">{{ tuple.0.date|pytils_date }}, {{ tuple.0.date|date:"H:i" }}</p>
 					{% endcomment %}
-					<a href='{% url publication tuple.0.id %}' class="read">→</a>
+					<a style="text-decoration: none;" href='#' class="read" id="read-{{ tuple.0.id }}">&rarr;</a>
 					{% comment %}
 					<span>(слов: {{ tuple.1.0 }}, фото: {{ tuple.1.1 }})</span>
 					{% endcomment %}

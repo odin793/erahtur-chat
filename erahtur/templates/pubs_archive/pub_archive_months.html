@@ -18,7 +18,7 @@
 				{% comment %}
 				<p class="date">{{ pub.date|pytils_date }}, {{ pub.date|date:"H:m" }}</p>
 				{% endcomment %}
-				<a href='{% url publication tuple.0.id %}' class="read">→</a>
+				<a style="text-decoration: none;" href='#' class="read" id="read-{{ tuple.0.id }}">&rarr;</a>
 
 				<div class="pub_statistics rc4">
 					<div class="pub_date">
