@@ -6,7 +6,9 @@
 			<a href="{% url panorama panorama.id %}">{{ panorama.name }}</a>
 		</p>
 		<div class="preview_image">
-			<img src="{{ panorama.preview_1.url }}" alt="{{ panorama.short_description }}" width="640" height="85" />
+			<a href="{% url panorama panorama.id %}">
+				<img src="{{ panorama.preview_1.url }}" alt="{{ panorama.short_description }}" width="640" height="85" />
+			</a>
 		</div>
 		<p class="date">Дата съемки: {{ panorama.date|pytils_date }}.</p>
 		<div class="short_description"> {{ panorama.short_description|safe }} </div>
