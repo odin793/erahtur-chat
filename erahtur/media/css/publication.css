@@ -1,3 +1,5 @@
+/* Publications and panorams styles
+
 /* Publication text
 ----------------------------------------- */
 
@@ -25,7 +27,7 @@
     border: none;
 }
 
-.publication .title {
+.publication .title, .panorama .title {
 	font-weight: bold;
 	font-size: 30px;
 	padding: 5px 0px 5px 0px;
@@ -36,7 +38,7 @@
     color: #B0B0B0;
 }*/
 
-.publication .title a {
+.publication .title a, .panorama .title a {
 	letter-spacing: 0px;
 	text-decoration: none;
 	/*text-transform: uppercase;*/
@@ -51,7 +53,7 @@
 	text-align: justify;
 }
 
-.date {
+.publication .date {
     padding: 8px 0;
     font-style: italic;
 }
@@ -65,7 +67,7 @@
     width: 30px;
 }
 
-.publication .spacer {
+.publication .spacer, .panorama .spacer {
     height: 15px;
 }
 
@@ -90,16 +92,16 @@
 /* Tags
 ----------------------------------------- */
 
-.pub_tags {
+.pub_tags, .panorama_tags {
     margin: 10px 5px 10px 0;
     width: 490px;
 }
-.pub_tags a {
+.pub_tags a, .panorama_tags a {
     text-decoration: underline;
     color: #000;
 }
 
-.pub_tag {
+.pub_tag, .panorama_tag {
     font-size: 12px;
     padding: 0 3px 0 12px;
     background: url('tag_bg.png') no-repeat;
@@ -211,8 +213,3 @@
     width: 620px;
 }
 
-.clear {
-    clear: both;
-    height: 0;
-    visibility: hidden;
-}

@@ -70,6 +70,10 @@ class SongAdmin(admin.ModelAdmin):
     list_display = ('name', 'artist', )
 
 
+class PanoramaAdmin(admin.ModelAdmin):
+    pass
+
+
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'icq', 'pk')
     
@@ -89,6 +93,7 @@ admin.site.register(Publication, PublicationAdmin)
 admin.site.register(History, HistoryAdmin)
 admin.site.register(Neighbour, NeighbourAdmin)
 admin.site.register(Song, SongAdmin)
+admin.site.register(Panorama, PanoramaAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(PhotoAlbum, PhotoAlbumAdmin)
 admin.site.register(LinkSection, LinkSectionAdmin)

@@ -36,6 +36,9 @@ urlpatterns = patterns('',
     url(r'^creation/music/$', music, name='music'),
     url(r'^creation/photoalbums/$', photoalbums_list, name='photoalbums'),
     url(r'^creation/photoalbum/(\d+)/$', photoalbum, name='photoalbum'),
+    url(r'^creation/panorams/(\d+)/$', panorama, name='panorama'),
+    url(r'^creation/panorams_list/$', panorams_list, name='panorams_list'),
+    url(r'^creation/panorams/tags/(\d+)/$', panorams_by_tag, name='panorams_by_tag'),
     url(r'^links/$', links, name='links'),
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:

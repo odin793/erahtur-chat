@@ -549,4 +549,24 @@ def find_pubs(token):
         if re.search(token, raw_pub):
             pubs.append(pub)
     return pubs
-     
+
+def panorama(request, panorama_id):
+    panorama = Panorama.objects.get(id=panorama_id)
+    return render_to_response('creation/panorama.html', RequestContext(request, {
+        'panorama': panorama,
+    }))
+
+def panorams_list(request):
+    panorams = Panorama.objects.all()
+    return render_to_response('creation/panorams_list.html', RequestContext(request, {
+        'panorams': panorams,
+    }))
+
+def panorams_by_tag(request, tag_id): # returns ppanorams, associated with specified tag
+    tag = get_object_or_404(Tag, id=tag_id)
+    panorams = TaggedItem.objects.get_by_model(Panorama, tag)
+    #pub_list = zip(pubs_by_tag, map(publication_statistics, pubs_by_tag))
+    return render_to_response('creation/panorams_by_tag.html', RequestContext(request, {
+        'panorams': panorams,
+        'tag': tag,
+    }))

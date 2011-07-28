@@ -1,0 +1,19 @@
+{% extends "erahtur_main.html" %}
+{% load navbar %}
+{% block title %}
+<title>Ерахтур - Панорамы - {{ tag.name }}</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="publication_wrapper">
+	<h3>Творчество / <span class="active_font">Панорамы</span></h3>
+
+	{% if panorams %}
+		<h2 style="text-align: center;"><span class="active_font">{{ tag.name }}</span></h2>
+		{% panorams_list panorams %}
+	{% endif %}
+</div>
+
+{% endblock %}	
+		
