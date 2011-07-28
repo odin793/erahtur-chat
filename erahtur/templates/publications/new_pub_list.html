@@ -64,7 +64,21 @@
 		{% else %}
 			<h3>Тут пока ничего нет. Попробуйте посмотреть на более ранних страницах</h3>
 		{% endif %}		
+	
+		<div>
+			<p>
+	       {% for i in pages %}
+					{% ifequal i current_page %}
+						<span class="filmfeed_pages_disabled">{{ i }}</span>
+					{% else %}		
+	       		<a class="filmfeed_pages" href="{% url pub_list pub_type i %}">{{ i }}</a>
+					{% endifequal %}
+				{% endfor %}
+		  </p>
+		</div>	
+	
 	</div>
+	
 	
 	
 	{% comment %}
@@ -93,16 +107,5 @@
 	{% endcomment %}
 	
 	
-	<div>
-		<p>
-       {% for i in pages %}
-				{% ifequal i current_page %}
-					<span class="filmfeed_pages_disabled">{{ i }}</span>
-				{% else %}		
-       		<a class="filmfeed_pages" href="{% url pub_list pub_type i %}">{{ i }}</a>
-				{% endifequal %}
-			{% endfor %}
-	  </p>
-	</div>
 					
 {% endblock %}
