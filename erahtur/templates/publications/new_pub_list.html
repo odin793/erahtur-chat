@@ -25,7 +25,7 @@
 
 		{% comment %}<h3>Новости / <span class="active_font">{{ russian_pub_type }}</span></h3>{% endcomment %}
 		{% if pub_list %}
-			{% for tuple in pub_list %}				
+			{% for tuple in pub_list %}
 				<div class="publication">
 					<p class="title">							
 						<a href="{% url publication tuple.0.id %}">{{ tuple.0.title }}</a>
@@ -64,7 +64,21 @@
 		{% else %}
 			<h3>Тут пока ничего нет. Попробуйте посмотреть на более ранних страницах</h3>
 		{% endif %}		
+	
+		<div>
+			<p>
+	       {% for i in pages %}
+					{% ifequal i current_page %}
+						<span class="filmfeed_pages_disabled">{{ i }}</span>
+					{% else %}		
+	       		<a class="filmfeed_pages" href="{% url pub_list pub_type i %}">{{ i }}</a>
+					{% endifequal %}
+				{% endfor %}
+		  </p>
+		</div>	
+	
 	</div>
+	
 	
 	
 	{% comment %}
@@ -93,16 +107,5 @@
 	{% endcomment %}
 	
 	
-	<div>
-		<p>
-       {% for i in pages %}
-				{% ifequal i current_page %}
-					<span class="filmfeed_pages_disabled">{{ i }}</span>
-				{% else %}		
-       		<a class="filmfeed_pages" href="{% url pub_list pub_type i %}">{{ i }}</a>
-				{% endifequal %}
-			{% endfor %}
-	  </p>
-	</div>
 					
 {% endblock %}

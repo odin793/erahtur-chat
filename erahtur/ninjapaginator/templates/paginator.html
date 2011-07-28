@@ -1,0 +1,77 @@
+{% if digg %}
+{% if PREVIOUS %}
+    <a href='?page={{ PREVIOUS }}' class="digg_nextprev">&lt;&lt; Previous</a>
+{% else %}
+    <span class="digg_nextprev_disabled">&lt;&lt; Previous</span>
+{% endif %}
+{% if left_page_numbers %}
+{% for i in left_page_numbers %}
+    {% ifequal i page_num %}
+        <span class="digg_pages_disabled">{{ i }}</span>
+    {% else %}
+        <a class="digg_pages" href='?page={{ i }}&{{ extra_params }}'>{{ i }}</a>
+    {% endifequal %}
+{% endfor %}
+{% endif %}
+
+{% if middle_page_numbers %}
+<span class="digg_seperator">...</span>
+{% for i in middle_page_numbers %}
+    {% ifequal i page_num %}
+        <span class="digg_pages_disabled">{{ i }}</span>
+    {% else %}
+        <a class="digg_pages" href='?page={{ i }}&{{ extra_params }}'>{{ i }}</a>
+    {% endifequal %}
+{% endfor %}
+{% endif %}
+
+{% if right_page_numbers %}
+<span class="digg_seperator">...</span>
+{% for i in right_page_numbers %}
+    {% ifequal i page_num %}
+        <span class="digg_pages_disabled">{{ i }}</span>
+    {% else %}
+        <a class="digg_pages" href='?page={{ i }}&{{ extra_params }}'>{{ i }}</a>
+    {% endifequal %}
+{% endfor %}
+{% endif %}
+
+{% if NEXT %}
+    <a href='?page={{ NEXT }}&{{ extra_params }}' class="digg_nextprev">Next &gt;&gt;</a>
+{% else %}
+    <span class="digg_nextprev_disabled">Next &gt;&gt;</span>
+{% endif %}
+{% endif %}
+
+{% if filmfeed %}
+{% for i in page_numbers %}
+    {% ifequal i page_num %}
+        <span class="filmfeed_pages_disabled">{{ i }}</span>
+    {% else %}
+        <a href='?page={{ i }}&{{ extra_params }}' class="filmfeed_pages">{{ i }}</a>
+    {% endifequal %}
+{% endfor %}
+{% endif %}
+
+
+{% if muzx %}
+<div id="muzx_paginator">
+    <div id="muzx_paginator_left">
+    {% for i in page_numbers %}
+        {% ifequal i page_num %}
+            <a href='?page={{ i }}&{{ extra_params }}' class="muzx_pages_current">{{ i }}</a>
+        {% else %}
+            <a href='?page={{ i }}&{{ extra_params }}' class="muzx_pages">{{ i }}</a>
+        {% endifequal %}
+    {% endfor %}
+    </div>
+
+    <div id="muzx_paginator_right">
+        <select>
+            <option value="?per_page=10">10</option>
+            <option value="?per_page=20">20</option>
+            <option value="?per_page=50">50</option>
+        </select>
+    </div>
+</div>
+{% endif %}

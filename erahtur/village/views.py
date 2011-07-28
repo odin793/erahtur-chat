@@ -17,6 +17,8 @@ from erahtur import settings
 import django
 from django.db.models import Q
 import re
+from ninjapaginator.util import NinjaPaginator
+from annoying.decorators import render_to
 
 def make_photo_pairs(photo_set):    # return list of lists of two photos
     photo_pairs = []
@@ -80,7 +82,6 @@ def pub_list(request, pub_type, page_num):
         'pages': range(1, 11),
         'current_page': int(page_num),
     }))
-    
 
 def publications_archive(request): # returns dict of years and months of archive pubs
      pubs = Publication.objects.all()
@@ -555,12 +556,14 @@ def panorama(request, panorama_id):
     return render_to_response('creation/panorama.html', RequestContext(request, {
         'panorama': panorama,
     }))
-
+    
+@render_to('creation/panorams_list.html')    
+@NinjaPaginator(style='filmfeed', per_page=10)
 def panorams_list(request):
     panorams = Panorama.objects.all()
-    return render_to_response('creation/panorams_list.html', RequestContext(request, {
-        'panorams': panorams,
-    }))
+    return {
+        'object_list': panorams,
+    }
 
 def panorams_by_tag(request, tag_id): # returns ppanorams, associated with specified tag
     tag = get_object_or_404(Tag, id=tag_id)

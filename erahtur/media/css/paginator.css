@@ -1,0 +1,123 @@
+a.digg_nextprev {
+    display: block;
+    border:1px solid #9AAFE5;
+    color:#999999;
+    float:left;
+    padding: 5px 5px;
+    background:#FFFFFF none repeat scroll 0 0;
+    text-decoration: none;
+    color:#105CB6;
+    font: 11px arial;
+    margin-right:0.1em;
+    font-weight:bold;
+}
+
+a.digg_nextprev:hover {
+    border-color:#2E6AB1;
+    color:#000033;
+}
+
+span.digg_nextprev_disabled {
+    display: block;
+    border:1px solid #DDDDDD;
+    color:#999999;
+    float:left;
+    padding: 5px 5px;
+    background:#FFFFFF none repeat scroll 0 0;
+    text-decoration: none;
+    font: 11px arial;
+    margin-right:0.1em;
+}
+
+a.digg_pages {
+    float: left;
+    border:1px solid #9AAFE5;
+    text-decoration:none;
+    background:#FFFFFF none repeat scroll 0 0;
+    display:block;
+    padding: 5px 5px;
+    margin-right:0.1em;
+    font: 11px arial;
+    color:#105CB6;
+}
+
+a.digg_pages:hover {
+    border-color:#2E6AB1;
+    color:#000033;
+}
+
+a.digg_pages:focus {
+    color:#000033;
+}
+
+span.digg_pages_disabled {
+    float: left;
+    background:#2E6AB1 none repeat scroll 0 0;
+    border:1px solid #9AAFE5;
+    text-decoration:none;
+    display:block;
+    padding: 5px 8px;
+    margin-right:0.1em;
+    font: 11px arial;
+    color:#FFFFFF;
+    font-weight:bold;
+}
+
+span.digg_seperator {
+    display: block;
+    float: left;
+    font-size: 8px;
+    padding: 10px 5px 0px 5px;
+}
+
+
+a.filmfeed_pages {
+    border: 1px solid #2B2B2B;
+    background-color: #000000;
+    color: #808080;
+    display: block;
+    float: left;
+    font-size: 20px;
+    margin-bottom: 0.5em;
+    margin-right: 0.3em;
+    margin-top: 0.15em;
+    padding: 0.1em 0.5em 0.1em 0.4em;
+}
+
+
+span.filmfeed_pages_disabled {
+    background-color:#3B3B3B;
+    border-color:#3B3B3B;
+    color:#000000;
+    border:1px solid #2B2B2B;
+    display:block;
+    float:left;
+    font-size:20px;
+    margin-bottom:0.5em;
+    margin-right:0.3em;
+    margin-top:0.15em;
+    padding:0.1em 0.5em 0.1em 0.4em;
+}
+
+
+#muzx_paginator {
+    overflow: hidden;
+}
+
+#muzx_paginator_left {
+    float: left;
+}
+
+#muzx_paginator_left a.muzx_pages_current {
+   background-color:#CDDF00; 
+   padding:4px;
+   color:#000000;
+}
+
+#muzx_paginator_left a.muzx_pages {
+    color:#000000;
+}
+
+#muzx_paginator_right {
+    float: right;
+}
