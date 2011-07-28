@@ -1,0 +1,93 @@
+{% extends 'erahtur_main.html' %}
+{% load navbar %}
+{% block title %}
+<title> Ерахтур - {{ panorama.name }} </title>
+{% endblock %}
+
+{% block extrahead %}
+
+<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+<script type="text/javascript">
+	new Ya.share({
+        element: 'ya_share',
+            elementStyle: {
+                'type': 'none',
+                'border': true,
+                'quickServices': ['twitter', '|', 'vkontakte', 'facebook','lj','|','odnoklassniki','moimir']
+            },
+						description: 'Официальный сайт Ерахтура epaxtyp.com',
+            serviceSpecific: {
+                twitter: {
+                	title: '#epaxtyp / ' + document.title
+               },
+								vkontakte: {
+									title: document.title + ' ' + window.location.href,
+									link: window.location.href,
+									//title: 'Официальный сайт Ерахтура',
+								},
+								lj: {
+									title: 'Epaxtyp - ' + document.title,
+								},
+        }
+});
+</script>
+
+{% endblock %}
+
+{% block content %}
+<div class="publication_wrapper">
+	{% comment %}<h3>Творчество / Панорамы / <span class="active_font">{{ panorama.name }}</span></h3>{% endcomment %}
+	<div class="panorama no-border">				
+		<p class="title">			
+			<a href="{% url panorama panorama.id %}">{{ panorama.name }}</a>
+		</p>
+		<div class="preview_image">
+			<img src="{{ panorama.preview_1.url }}" alt="{{ panorama.short_description }}" width="640" height="85" />
+		</div>
+
+		<div class="links_block">
+			<p class="download_links">
+				Скачать: <a href="{{ panorama.jpg_1_link_download }}">jpg</a> ({{ panorama.jpg_1_download_size }}), 
+				<a href="{{ panorama.flash_1_link_download }}">flv</a> ({{ panorama.flash_1_download_size }}),
+				<a href="{{ panorama.mov_1_link_download }}">mov</a> ({{ panorama.mov_1_download_size }}).
+			</p>
+			<p class="view_links">
+				Просмотреть: <a href="{{ panorama.jpg_1_link_view }}">jpg</a> ({{ panorama.jpg_1_view_size }}), 
+				<a href="{{ panorama.flash_1_link_view }}">flv</a> ({{ panorama.flash_1_view_size }}).
+			</p>
+		</div>					
+	
+		<div class="preview_image">
+			<img src="{{ panorama.preview_2.url }}" width="640" height="85" />
+		</div>
+		
+		<div class="links_block">
+			<p class="download_links">
+				Скачать: <a href="{{ panorama.jpg_2_link_download }}">jpg</a> ({{ panorama.jpg_2_download_size }}), 
+				<a href="{{ panorama.flash_2_link_download }}">flv</a> ({{ panorama.flash_2_download_size }}).
+			</p>
+			<p class="view_links">
+				Просмотреть: <a href="{{ panorama.jpg_2_link_view }}">jpg</a> ({{ panorama.jpg_2_view_size }}), 
+				<a href="{{ panorama.flash_2_link_view }}">flv</a> ({{ panorama.flash_2_view_size }}).
+			</p>
+		</div>					
+
+		<p class="date">Дата съемки: {{ panorama.date|pytils_date }}.</p>
+		<div class="full_description"> {{ panorama.full_description|safe }} </div>
+{% comment %}		<br class="clear">{% endcomment %}
+		{% if panorama.get_tags %}
+		<div class="panorama_tags">
+			{% for tag in panorama.get_tags %}
+					<div class="panorama_tag"><a href="{% url panorams_by_tag tag.id %}">{{ tag.name|cut:" " }}</a></div>
+			{% endfor %}
+		</div>
+		<br class="clear">
+		{% endif %}
+		
+		<div id="ya_share" class="ya_share"></div>
+		
+	</div>
+
+</div>
+
+{% endblock %}

@@ -24,6 +24,10 @@ def navbar():
         'neighbour_list': neighbour_list
     }
 
+@register.inclusion_tag('navbar/panorams_list_template.html')
+def panorams_list(panorams):    
+    return {'panorams': panorams,}
+
 @register.simple_tag
 def chat_host_name():
     chat_host_name = settings.CHAT_HOST_NAME

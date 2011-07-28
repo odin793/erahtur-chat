@@ -57,6 +57,12 @@ h3 {
     -webkit-border-radius: 12px;
 }
 
+.clear {
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
 #hidden_chat_form {
     display: none;
 }
@@ -113,6 +119,17 @@ h3 {
     margin: 5px 0;
 }
 
+
+/* Panorams
+----------------------------------------- */
+
+.panorama .date, .panorama .short_description, .panorama .full_description, .panorama .preview_image {
+    margin: 10px 0;
+}
+
+/*.panorama .links_block {
+    margin: 10px 0 -15px 0;
+*/    
 /* Links 
 ----------------------------------------- */
 

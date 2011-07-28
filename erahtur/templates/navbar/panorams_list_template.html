@@ -1,0 +1,38 @@
+{% load pytils_date %}
+
+{% for panorama in panorams %}
+	<div class="panorama no-border">				
+		<p class="title">			
+			<a href="{% url panorama panorama.id %}">{{ panorama.name }}</a>
+		</p>
+		<div class="preview_image">
+			<a href="{% url panorama panorama.id %}">
+				<img src="{{ panorama.preview_1.url }}" alt="{{ panorama.short_description }}" width="640" height="85" />
+			</a>
+		</div>
+		<p class="date">Дата съемки: {{ panorama.date|pytils_date }}.</p>
+		<div class="short_description"> {{ panorama.short_description|safe }} </div>
+		{% comment %}<a style="text-decoration: none;" href='#' class="read" id="read-{{ tuple.0.id }}">&rarr;</a>{% endcomment %}
+		<div class="links_block">
+			<p class="download_links">
+				Скачать: <a href="{{ panorama.jpg_1_link_download }}">jpg</a> ({{ panorama.jpg_1_download_size }}), 
+				<a href="{{ panorama.flash_1_link_download }}">flv</a> ({{ panorama.flash_1_download_size }}),
+				<a href="{{ panorama.mov_1_link_download }}">mov</a> ({{ panorama.mov_1_download_size }}).
+			</p>
+			<p class="view_links">
+				Просмотреть: <a href="{{ panorama.jpg_1_link_view }}">jpg</a> ({{ panorama.jpg_1_view_size }}), 
+				<a href="{{ panorama.flash_1_link_view }}">flv</a> ({{ panorama.flash_1_view_size }}).
+			</p>
+		</div>					
+		{% comment %}<br class="clear">{% endcomment %}
+		{% if panorama.get_tags %}
+		<div class="panorama_tags">
+			{% for tag in panorama.get_tags %}
+					<div class="panorama_tag"><a href="{% url panorams_by_tag tag.id %}">{{ tag.name|cut:" " }}</a></div>
+			{% endfor %}
+		</div>
+		<br class="clear">
+		{% endif %}
+		<p class="spacer"></p>
+	</div>
+{% endfor %}

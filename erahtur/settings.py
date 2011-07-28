@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'village',
     'forum',
     'tagging',
+    'ninjapaginator',
 )
 
 FORCE_LOWERCASE_TAGS=True

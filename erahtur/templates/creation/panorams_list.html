@@ -1,0 +1,28 @@
+{% extends 'erahtur_main.html' %}
+{% load navbar %}
+{% block title %}
+<title> Ерахтур - панорамы </title>
+{% endblock %}
+
+
+{% block extrahead %}
+
+{% comment %}<link rel='stylesheet' type='text/css' href='{{ MEDIA_URL }}css/paginator.css'></link>{% endcomment %}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="publication_wrapper">
+	<h3>Творчество / <span class="active_font">Панорамы</span></h3>
+{% if object_list %}
+	{% panorams_list object_list %}
+{% endif %}
+<p>
+  {% include "paginator.html" %}
+</p>
+</div>
+
+{% endblock %}	
+		

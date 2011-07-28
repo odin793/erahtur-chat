@@ -301,6 +301,47 @@ class Photo(models.Model):
         return u'фото'
     
 
+class Panorama(models.Model):
+    name = models.CharField(u'название', max_length=100)
+    preview_1 = MyPhotoField(u'превью_1', upload_to='photos/panorams')
+    preview_2 = MyPhotoField(u'превью_2', upload_to='photos/panorams')
+    short_description = tinymce_models.HTMLField(u'короткое описание')
+    full_description = tinymce_models.HTMLField(u'полное описание')
+    date = models.DateField(verbose_name=u'дата съемки', blank=True, null=True)
+    jpg_1_link_download = models.URLField(u'jpg_1 архив', max_length=150, verify_exists=False)
+    jpg_1_download_size = models.CharField(u'jpg_1 размер архива', max_length=30)
+    flash_1_link_download = models.URLField(u'flash_1 архив', max_length=150, verify_exists=False)
+    flash_1_download_size = models.CharField(u'flash_1 размер архива', max_length=30)
+    mov_1_link_download = models.URLField(u'mov_1 архив', max_length=150, verify_exists=False)
+    mov_1_download_size = models.CharField(u'mov_1 размер архива', max_length=30)
+    jpg_1_link_view = models.URLField(u'jpg_1', max_length=150, verify_exists=False)
+    jpg_1_view_size = models.CharField(u'jpg_1 размер', max_length=30)
+    flash_1_link_view = models.URLField(u'flash_1', max_length=150, verify_exists=False)
+    flash_1_view_size = models.CharField(u'flash_1 размер', max_length=30)
+    jpg_2_link_download = models.URLField(u'jpg_2 архив', max_length=150, verify_exists=False)
+    jpg_2_download_size = models.CharField(u'jpg_2 размер архива', max_length=30)
+    flash_2_link_download = models.URLField(u'flash_2 архив', max_length=150, verify_exists=False)
+    flash_2_download_size = models.CharField(u'flash_2 размер архива', max_length=30)
+    jpg_2_link_view = models.URLField(u'jpg_2', max_length=150, verify_exists=False)
+    jpg_2_view_size = models.CharField(u'jpg_2 размер', max_length=30)
+    flash_2_link_view = models.URLField(u'flash_2', max_length=150, verify_exists=False)
+    flash_2_view_size = models.CharField(u'flash_2 размер', max_length=30)
+    tags = TagField(verbose_name=u'Тэги')
+    
+    def set_tags(self, tags):
+        Tag.objects.update(self, tags)
+    
+    def get_tags(self):
+        return Tag.objects.get_for_object(self)
+        
+    class Meta:
+        verbose_name = u'панорама'
+        verbose_name_plural = u'Панорамы'
+    
+    def __unicode__(self):
+        return self.name
+
+
 class LinkSection(models.Model):
     name = models.CharField(u'название раздела', max_length=30)
     sort = models.IntegerField(verbose_name=u'порядок следования', default=0)
