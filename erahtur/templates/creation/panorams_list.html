@@ -4,13 +4,24 @@
 <title> Ерахтур - панорамы </title>
 {% endblock %}
 
+
+{% block extrahead %}
+
+<link rel='stylesheet' type='text/css' href='{{ MEDIA_URL }}css/paginator.css'></link>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+{% endblock %}
+
 {% block content %}
 
 <div class="publication_wrapper">
 	<h3>Творчество / <span class="active_font">Панорамы</span></h3>
-{% if panorams %}
-	{% panorams_list panorams %}
+{% if object_list %}
+	{% panorams_list object_list %}
 {% endif %}
+<p>
+  {% include "paginator.html" %}
+</p>
 </div>
 
 {% endblock %}	

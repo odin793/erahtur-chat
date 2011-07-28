@@ -25,7 +25,7 @@
 
 		{% comment %}<h3>Новости / <span class="active_font">{{ russian_pub_type }}</span></h3>{% endcomment %}
 		{% if pub_list %}
-			{% for tuple in pub_list %}				
+			{% for tuple in pub_list %}
 				<div class="publication">
 					<p class="title">							
 						<a href="{% url publication tuple.0.id %}">{{ tuple.0.title }}</a>
