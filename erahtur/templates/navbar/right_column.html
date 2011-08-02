@@ -1,0 +1,59 @@
+{% load pytils_date %}
+{% load tagging_tags %}
+
+<div id="sidebar">					
+	{% comment %}
+		<div id="accordion">
+		{% for year, months in date_pairs_processor.items %}
+			<h3 class="toggler">Год {{ year }}</h3>
+			<div class="element">
+				<ul>
+				{% for month in months %}
+					<li>
+						<a href="{% url pub_archive_months year month %}">{{ month|month_name }}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			</div>
+		{% endfor %}
+		</div>
+	{% endcomment %}
+	<div class="sidebar_wrapper">
+		<h3 class="title">Архив новостей</h3>
+		<div class="archive">
+		{% if date_pairs_processor %}
+			{% for year, months in date_pairs_processor.items %}
+				<h3 class="archive_year">Год {{ year }}</h3>
+				<div>
+					<ul>
+					{% for month in months %}
+						<li>
+							<a href="{% url pub_archive_months year month %}">{{ month|month_name }}</a>
+						</li>
+					{% endfor %}
+					</ul>
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>Архив пока пуст</p>
+		{% endif %}
+		</div>
+	</div>
+
+	<div class="sidebar_wrapper">
+		<div class="tag_cloud">
+		{% tag_cloud_for_model village.Publication as tags with min_count=3 distribution=linear steps=10 %}
+    {% for tag in tags %}
+			{% ifequal tag.font_size 10 %}
+    		<a class="cloud_tag" href="{% url pubs_by_tag tag.id %}" style="font-size: 2em">
+					{{ tag.name|cut:" " }}
+				</a>
+			{% else %}
+				<a class="cloud_tag" href="{% url pubs_by_tag tag.id %}" style="font-size: 1.{{ tag.font_size }}em">
+					{{ tag.name|cut:" " }}
+				</a>
+			{% endifequal %}														
+    {% endfor %}
+		</div>
+	</div>
+</div>

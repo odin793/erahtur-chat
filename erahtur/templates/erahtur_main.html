@@ -4,7 +4,7 @@
 	<head>
 		{% block title %}{% endblock %}
 		{% load navbar %}
-		{% load tagging_tags %}
+
 		<link rel="stylesheet" href="{{ MEDIA_URL }}css/mediaboxAdvBlack21.css" type="text/css" media="screen">
 		{% comment %}
 		<link rel='stylesheet' type='text/css' href='{{ MEDIA_URL }}css/styles.css'></link>
@@ -44,8 +44,10 @@
 						{% endblock %}
 					</div>
 				</div>
-				<div id="sidebar">					
-					{% comment %}
+				
+				{% block right_column %}
+				{% comment %}<div id="sidebar">					
+
 						<div id="accordion">
 						{% for year, months in date_pairs_processor.items %}
 							<h3 class="toggler">Год {{ year }}</h3>
@@ -60,7 +62,7 @@
 							</div>
 						{% endfor %}
 						</div>
-					{% endcomment %}
+
 					<div class="sidebar_wrapper">
 						<h3 class="title">Архив новостей</h3>
 						<div class="archive">
@@ -99,7 +101,8 @@
 				    {% endfor %}
 						</div>
 					</div>
-				</div>
+				</div>{% endcomment %}
+				{% endblock %}
 					
 			</div>
 			<div id="before_footer">

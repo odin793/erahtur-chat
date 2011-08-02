@@ -1,5 +1,6 @@
 {% extends 'erahtur_main.html' %}
 {% load navbar %}
+{% load pytils_date %}
 {% block title %}
 <title>Ерахтур - архив</title>
 {% endblock %}
@@ -51,3 +52,7 @@
 </div>
 
 {% endblock %}
+
+{% block right_column %}
+	{% right_column %}
+{% endblock %}	

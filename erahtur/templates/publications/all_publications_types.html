@@ -1,7 +1,10 @@
 {% extends 'erahtur_main.html' %}
+
+{% load navbar %}
 {% block title %}
 <title>Ерахтур - новости</title>
 {% endblock %}
+
 {% block content %}
 <div class='content_wrapper'>
 	<div id="center_list">
@@ -14,4 +17,9 @@
 		</ul>
 	</div>
 </div>
+
+{% endblock %}
+
+{% block right_column %}
+	{% right_column %}
 {% endblock %}

@@ -92,14 +92,6 @@ def get_thumbnail(photo):
     else:
         return outfile_url
 
-@register.filter(name='month_name')
-def month_name(month):
-    months = {
-        1: u'Январь', 2: u'Февраль', 3: u'Март', 4: u'Апрель', 
-        5: u'Май',6: u'Июнь', 7: u'Июль', 8: u'Август', 
-        9: u'Сентябрь', 10: u'Октябрь', 11: u'Ноябрь', 12: u'Декабрь'
-    }
-    return months[int(month)]
     
 @register.filter(name='pytils_date')
 def pytils_date(date):
@@ -127,3 +119,15 @@ def phone_repr(phone_str):
 @register.simple_tag
 def chat_auth_token(user):
     return sha256(settings.SECRET_KEY + ":" + user.username).hexdigest()
+    
+@register.inclusion_tag('navbar/right_column.html')
+def right_column():
+    pubs = Publication.objects.all()
+    archive_pubs = pubs.filter(archive=True).order_by('-date')
+    years = set([pub.date.year for pub in archive_pubs])
+    date_pairs = {}
+    for year in years:
+        pubs = archive_pubs.filter(date__year=year)
+        months = set([pub.date.month for pub in pubs])
+        date_pairs[year] = months
+    return {'date_pairs_processor': date_pairs,}
