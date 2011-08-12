@@ -128,7 +128,7 @@ document.addEvent('domready', function() {
             e.stop();
             chat_notification_block.fireEvent(
                 'burn', 
-                'Пожалуйста, <a href="/login_page">войдите</a> или <a href="/accounts/registration/">зарегистрируйтесь.</a>'
+                'Пожалуйста, <a href="/login_page" class="notification">войдите</a> или <a href="/accounts/registration/" class="notification">зарегистрируйтесь.</a>'
             );
         });
     };

@@ -64,6 +64,10 @@ h3 {
     visibility: hidden;
 }
 
+.notification {
+    color: #414141;
+}
+
 #hidden_chat_form {
     display: none;
 }
