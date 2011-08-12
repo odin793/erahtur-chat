@@ -113,7 +113,7 @@ document.addEvent('domready', function() {
         chat_notification_block.addEvent('burn', function(text) {
             chat_notification_block.set('html', text);
             fx.start({
-                'background-color': ['#D1D1D1', '#fff'],
+                'background-color': ['#e9a936', '#fff'],
                 'opacity': [1,0],
                 'visibility': 'visible',
             });

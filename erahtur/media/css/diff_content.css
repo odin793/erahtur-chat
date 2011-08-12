@@ -37,7 +37,8 @@ h3 {
 }
 
 .active_font {
-    color: #f87676;
+    /*color: #f87676;*/
+    color: #e9a936;
     font-family: Arial;
 }
 
@@ -78,7 +79,7 @@ h3 {
 .songs_table .top {
     font-style: italic;
     font-size: 22px;
-    color: #f87676;
+    /*color: #f87676;*/
 }
 
 .songs_table td {

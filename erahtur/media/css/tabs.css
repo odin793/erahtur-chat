@@ -8,17 +8,20 @@
 
 .on {
     cursor: pointer;
-    background: #f87676;
-    color: white;
+    /*background: #f87676;*/
+    /*color: white;*/
+    color: #e9a936;
 }
 
 .off {
     cursor: pointer;
-    background: #d1d1d1;
+    color: #689c22;
+    /*background: #d1d1d1;*/
+    /*background: #689c22;*/
 }
 
 .tabOver {
-    background: #f87676;
+    /*background: #f87676;*/
 }
 
 ul.tabSet li {
@@ -32,24 +35,27 @@ ul.tabSet li {
     text-align: center;
     letter-spacing: 0px;
 	text-decoration: none;
-	text-transform: lowercase;
-	color: black;
-	-webkit-border-radius: 8px;
+	/*text-transform: lowercase;*/
+	/*color: black;*/
+	/*-webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    font-family: Arial;
+    font-family: Arial;*/
 }
 
 ul.tabSet li a {
-    color: black;
+    color: #689c22;
 }
 
 .tabSet .active_tab {
-    background: #f87676;
+    /*background: #f87676;*/
+    /*background: #e9a936;*/
+    color: #e9a936;
 }
 
 .tabSet .active_link {
-    color: white;
+    color: #e9a936;
+    /*color: e9a936;*/
 }
 
 .tabsHolder {
@@ -85,9 +91,10 @@ ul.tabSet li a {
 ------------------------------------------------*/
 
 .filmfeed_pages, .filmfeed_blocks {
-    border: 1px solid #2B2B2B;
+    /*border: 1px solid #2B2B2B;
     background-color: #000;
-    color: #808080;
+    color: #808080;*/
+    color: #689c22;
     display: block;
     float: left;
     font-size: 20px;
@@ -99,16 +106,21 @@ ul.tabSet li a {
 }
 
 a.filmfeed_pages:hover {
+    /*
     background-color: #f87676;
+    color: white;
+    */
+    background-color: #e9a936;
     color: white;
 }
 
 span.filmfeed_pages_disabled, span.filmfeed_blocks_disabled {
-    background-color:#f87676;
+    /*background-color:#f87676;
     border-color:#A60000;    
     border-color:#3B3B3B;
     color:#fff;
-    border:1px solid #2B2B2B;
+    border:1px solid #2B2B2B;*/
+    color: #e9a936;
     display:block;
     float: left;
     /*font-family: Helvetica;*/

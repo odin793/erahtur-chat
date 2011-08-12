@@ -11,7 +11,7 @@
 		<div class="archive" id="accordion">
 		{% if dict %}
 			{% for year, months in dict.items %}
-				<h3 class="archive_year toggler">Год {{ year }}</h3>
+				<h3 class="archive_year toggler active_font">Год {{ year }}</h3>
 				<div class="element">
 					<ul>
 					{% for month in months %}
@@ -23,7 +23,7 @@
 				</div>
 			{% endfor %}
 		{% else %}
-			<p>Архив пока пуст</p>
+		<p class="active_font">Архив пока пуст</p>			
 		{% endif %}
   </div>
 </div>

@@ -9,7 +9,7 @@
 
 		{% for result, texts in search_dict.items %}
 		<ul class="search_result">
-			<li class="pub_title"><a href="{% url publication result.id %}">{{ texts.0|safe }}</a></li>
+			<li class="pub_title"><a href="{% url publication result.id %}" class="active_font">{{ texts.0|safe }}</a></li>
 			<li>
 				{% for  block in texts.1 %}
 					{{ block|safe }}

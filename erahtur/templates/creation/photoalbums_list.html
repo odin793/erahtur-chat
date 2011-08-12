@@ -16,7 +16,7 @@
 		<div class="key_photo">
 			<a href="{% url photoalbum album.id %}"><img src="{{ key_photo|get_thumbnail }}" /></a>
 		</div>
-		<a href='{% url photoalbum album.id %}' class="read">→</a>
+		{% comment %}<a href='{% url photoalbum album.id %}' class="read">→</a>{% endcomment %}
 	</div>
 			
 		{% comment %}
