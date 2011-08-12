@@ -10,13 +10,19 @@
 }
    
 #sidebar .sidebar_wrapper {
-    background: #d1d1d1;
+    /*background: #d1d1d1;
     border-radius:12px;
     -moz-border-radius:12px;
-    -webkit-border-radius:12px;
+    -webkit-border-radius:12px;*/
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    margin: 20px 0 10px 0;
+}
+
+#sidebar .sidebar_wrapper_last {
     padding: 5px 5px 15px 5px;
     text-align: center;
-    margin: 20px 0;
+    margin: 5px 0;
 }
 
 #sidebar .title {
@@ -33,13 +39,15 @@
     color: #414141;
 }
 
-#sidebar .archive_year {
+/*#sidebar .archive_year {
     color: #f87676;
 }
+*/
 
-#sidebar p {
+/*#sidebar p {
     color: #f87676;
 }
+*/
 
 .archive a {
     color: black;

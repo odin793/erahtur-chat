@@ -12,9 +12,9 @@
     margin-bottom: 15px;
 } 
 
-.archive_path .archive_year {
+/*.archive_path .archive_year {
     color: #f87676;
-}
+}*/
 
 .publication {
 	margin-bottom: 15px;
@@ -40,9 +40,10 @@
 
 .publication .title a, .panorama .title a {
 	letter-spacing: 0px;
-	text-decoration: none;
+	/*text-decoration: none;*/
 	/*text-transform: uppercase;*/
-	color: #414141;
+	/*color: #414141;*/
+	color: #e9a936;
 	border: none;
 }
 
@@ -75,9 +76,10 @@
 ----------------------------------------- */
 
 .pub_statistics {
-    background: #e5e4e3;
-    border: 1px solid #d1d1d1;
+    /*background: #e5e4e3;
+    border: 1px solid #d1d1d1;*/
     margin-top: 8px;
+    font-style: italic;
     color: black;
     float: left;
     font-size: 16px;

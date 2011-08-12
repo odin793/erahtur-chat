@@ -10,7 +10,7 @@
     text-align: center;
     display: block;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 #navbar a:hover {
@@ -41,16 +41,19 @@
     font: bold 1em;
     width: 142px;
     /*background: #BF3030;*/
-    background: #d1d1d1;
+    /*;background: #d1d1d1;*/
+    background: #689c22;
 }
 
 #navbar ul li:hover {
-    background-color: #f87676;
+    /*background-color: #f87676;*/
     /*font-family: Helvetica;*/
+    background: #e9a936;
 }
 
 #navbar ul li ul li:hover {
-    background-color: #f87676;
+    /*background-color: #f87676;*/
+    background: #e9a936;
     font-family: Arial;
 }
 
@@ -68,7 +71,8 @@
 }
 
 #navbar .active_tab {
-    background: #f87676;
+    /*background: #f87676;*/
+    background: #e9a936;
 }
 
 #navbar .active_link {

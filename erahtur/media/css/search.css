@@ -17,10 +17,11 @@
     margin-bottom: 5px;
 }
 
-.search_result .pub_title a {
+/*.search_result .pub_title a {
     text-decoration: none;
     color: #414141;
 }
+*/
 
 .search_result .date {
     font-size: 16px;
@@ -36,4 +37,8 @@ div#search {
 
 div#search form input {
     font-size: 12px;
+}
+
+#search #search_text {
+    color: #fff;
 }

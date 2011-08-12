@@ -23,7 +23,7 @@
 		<div class="archive">
 		{% if date_pairs_processor %}
 			{% for year, months in date_pairs_processor.items %}
-				<h3 class="archive_year">Год {{ year }}</h3>
+				<h3 class="archive_year active_font">Год {{ year }}</h3>
 				<div>
 					<ul>
 					{% for month in months %}
@@ -35,12 +35,12 @@
 				</div>
 			{% endfor %}
 		{% else %}
-			<p>Архив пока пуст</p>
+			<p class="active_font">Архив пока пуст</p>
 		{% endif %}
 		</div>
 	</div>
-
-	<div class="sidebar_wrapper">
+<hr/>
+	<div class="sidebar_wrapper_last">
 		<div class="tag_cloud">
 		{% tag_cloud_for_model village.Publication as tags with min_count=3 distribution=linear steps=10 %}
     {% for tag in tags %}

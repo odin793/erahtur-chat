@@ -14,9 +14,9 @@
 		</div>
 		<div class="entry">{{ album.description }}</div>
 		<div class="key_photo">
-			<a href="{% url photoalbum album.id %}"><img src="{{ key_photo|get_thumbnail }}" /></a>
+			<a href="{% url photoalbum album.id %}"><img src="{{ key_photo|get_thumbnail }}" class="rc12" /></a>
 		</div>
-		<a href='{% url photoalbum album.id %}' class="read">→</a>
+		{% comment %}<a href='{% url photoalbum album.id %}' class="read">→</a>{% endcomment %}
 	</div>
 			
 		{% comment %}

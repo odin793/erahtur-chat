@@ -113,7 +113,7 @@ document.addEvent('domready', function() {
         chat_notification_block.addEvent('burn', function(text) {
             chat_notification_block.set('html', text);
             fx.start({
-                'background-color': ['#D1D1D1', '#fff'],
+                'background-color': ['#e9a936', '#fff'],
                 'opacity': [1,0],
                 'visibility': 'visible',
             });
@@ -128,7 +128,7 @@ document.addEvent('domready', function() {
             e.stop();
             chat_notification_block.fireEvent(
                 'burn', 
-                'Пожалуйста, <a href="/login_page">войдите</a> или <a href="/accounts/registration/">зарегистрируйтесь.</a>'
+                'Пожалуйста, <a href="/login_page" class="notification">войдите</a> или <a href="/accounts/registration/" class="notification">зарегистрируйтесь.</a>'
             );
         });
     };

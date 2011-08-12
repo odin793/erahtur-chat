@@ -37,7 +37,8 @@ h3 {
 }
 
 .active_font {
-    color: #f87676;
+    /*color: #f87676;*/
+    color: #e9a936;
     font-family: Arial;
 }
 
@@ -63,6 +64,10 @@ h3 {
     visibility: hidden;
 }
 
+.notification {
+    color: #414141;
+}
+
 #hidden_chat_form {
     display: none;
 }
@@ -78,7 +83,7 @@ h3 {
 .songs_table .top {
     font-style: italic;
     font-size: 22px;
-    color: #f87676;
+    /*color: #f87676;*/
 }
 
 .songs_table td {
@@ -295,4 +300,21 @@ td.value {
 	font-size: 16px;
 	font-weight: bold;
 	text-align: center;
+}
+
+/* Photoalbums
+------------------------------------------------*/
+
+#album_photos_block {
+    width: 710px;
+    padding: 0;
+    /*margin-bottom: 20px;*/
+    margin: 0 60px 20px 50px;
+}
+
+#photoalbum_title {
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: underline;
+    margin-bottom: 20px;
 }
