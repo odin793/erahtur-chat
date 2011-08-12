@@ -297,3 +297,20 @@ td.value {
 	font-weight: bold;
 	text-align: center;
 }
+
+/* Photoalbums
+------------------------------------------------*/
+
+#album_photos_block {
+    width: 710px;
+    padding: 0;
+    /*margin-bottom: 20px;*/
+    margin: 0 60px 20px 50px;
+}
+
+#photoalbum_title {
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}

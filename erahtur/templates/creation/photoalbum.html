@@ -25,10 +25,11 @@
 {% endcomment %}
 
 {% if photos %}
-<div id="photos_block_title">
+{% comment %}<div id="photos_block_title" class="active_font">{% endcomment %}
+<div id="photoalbum_title" class="active_font">
 	 {{ album.name }}{% comment %}(<span class="active_font">{{ photos|length }}</span>){% endcomment %}
 </div>
-<div id="photos_block">
+<div id="album_photos_block">
 	{% for photo in photos %}
 	<a href="{{ photo.image.url }}" rel="lightbox[set1]" title="{{ photo.description }}">
 		<img src="{{ photo|get_thumbnail }}" alt="{{ photo.description }}" class="photo_thumb rc12"/>
