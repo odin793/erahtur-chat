@@ -106,4 +106,31 @@ document.addEvent('domready', function() {
             };            
         });
     });
+    
+    if ( $('hidden_chat_form') == undefined ) { /* if user is not logged in */
+        chat_link = $('go_to_chat');
+        chat_notification_block = $('chat_notification_block');
+        chat_notification_block.addEvent('burn', function(text) {
+            chat_notification_block.set('html', text);
+            fx.start({
+                'background-color': ['#D1D1D1', '#fff'],
+                'opacity': [1,0],
+                'visibility': 'visible',
+            });
+        });
+        var fx = new Fx.Morph('chat_notification_block', {
+            duration: 7500,
+            wait: false,
+            transition: Fx.Transitions.linear.easeOut
+        });
+        
+        chat_link.addEvent('click', function(e) {
+            e.stop();
+            chat_notification_block.fireEvent(
+                'burn', 
+                'Пожалуйста, <a href="/login_page">войдите</a> или <a href="/accounts/registration/">зарегистрируйтесь.</a>'
+            );
+        });
+    };
+    
 });
