@@ -46,7 +46,7 @@ var RegistrationManager = new Class({
     username_check: function() {
         var username = this.username.getProperty('value').trim()
         var re = /\s/;
-        if (username.test(re) | username == '') {
+        if (username.test(/-/) | username.test(re) | username == '') { // no '-' and ' ' signs in django user model
             this.mark_mistake(this.username);
             this.username_valid = false;
         }
