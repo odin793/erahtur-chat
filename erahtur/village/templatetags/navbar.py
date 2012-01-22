@@ -53,34 +53,24 @@ def get_thumbnail(photo):
     if not path.exists(outfile_path):
         try:
             im = Image.open(infile_path)
-            #if im.size[0] > im.size[1]:
-            #    height = 150
-            #else:
-            #    height = 170
-            #ratio = float(im.size[0])/im.size[1]
-            #width = int(ratio*height)
-            #size = (width, height)
-            
             x, y = im.size
+            if x == y:
+                im.thumbnail((170, 170), Image.ANTIALIAS)
+                im.save(outfile_path, "JPEG")
+                return outfile_url                    
             if x > y:
                  left = int(round((x-y)/2))
                  upper = 0
                  right = left + y
                  lower = y
-                 #size = (int(y/10), int(y/10))
             elif x < y:
                 left = 0
                 upper = int(round((y-x)*0.8/2)) # 0.8 - because user head is usually in the upper part of the photo
                 right = x
                 lower = x + int(round((y-x)*0.8/2))
-                #size = (int(x/10), int(x/10))
-            else:
-                left = upper = right = lower = x
             size = (170, 170)
             box = (left, upper, right, lower)
             crop_im = im.crop(box)
-            #im.thumbnail(size, Image.ANTIALIAS)
-            #im.save(outfile_path, "JPEG")
             crop_im.thumbnail(size, Image.ANTIALIAS)
             crop_im.save(outfile_path, "JPEG")
             return outfile_url    
