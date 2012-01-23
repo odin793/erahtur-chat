@@ -508,9 +508,9 @@ $(document).ready(function() {
   });
 
   // update the daemon uptime every 10 seconds
-  setInterval(function () {
+  /*setInterval(function () {
     updateUptime();
-  }, 10*1000);
+  }, 10*1000);*/
 
   if (CONFIG.debug) {
     $("#loading").hide();
