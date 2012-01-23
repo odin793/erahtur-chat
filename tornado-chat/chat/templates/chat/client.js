@@ -7,6 +7,7 @@ var CONFIG = { debug: false
              };
 
 var nicks = [];
+var current_server_time = new Date();
 
 //  CUT  ///////////////////////////////////////////////////////////////////
 /* This license and copyright apply to all code until the next "CUT"
@@ -442,7 +443,7 @@ function onConnect (session) {
 function outputUsers () {
   who();
   var nick_string = nicks.length > 0 ? nicks.join(", ") : "(none)";
-  addMessage("В чате:", nick_string, new Date(), "notice");
+  addMessage("В чате:", nick_string, current_server_time, "notice");
   updateUsersLink();
   return false;
 }
@@ -452,6 +453,7 @@ function who () {
   jQuery.get("/who", {}, function (data, status) {
     if (status != "success") return;
     nicks = data.nicks;
+    current_server_time = new Date(data.current_server_time);
     //outputUsers();
     updateUsersLink();
   }, "json");
@@ -508,9 +510,9 @@ $(document).ready(function() {
   });
 
   // update the daemon uptime every 10 seconds
-  /*setInterval(function () {
+  setInterval(function () {
     updateUptime();
-  }, 10*1000);*/
+  }, 10*1000);
 
   if (CONFIG.debug) {
     $("#loading").hide();
