@@ -440,8 +440,10 @@ function onConnect (session) {
 
 //add a list of present chat members to the stream
 function outputUsers () {
+  who();
   var nick_string = nicks.length > 0 ? nicks.join(", ") : "(none)";
   addMessage("В чате:", nick_string, new Date(), "notice");
+  updateUsersLink();
   return false;
 }
 
@@ -450,7 +452,8 @@ function who () {
   jQuery.get("/who", {}, function (data, status) {
     if (status != "success") return;
     nicks = data.nicks;
-    outputUsers();
+    //outputUsers();
+    updateUsersLink();
   }, "json");
 }
 
@@ -460,7 +463,9 @@ $(document).ready(function() {
     if (e.keyCode != 13 /* Return */) return;
     var msg = $("#entry").attr("value").replace("\n", "");
     if (!util.isBlank(msg)) send(msg);
+    
     $("#entry").attr("value", ""); // clear the entry field.
+    who();
   });
 
   $("#usersLink").click(outputUsers);
@@ -480,8 +485,8 @@ $(document).ready(function() {
     }
 
     //more validations
-    if (/[^\w_\-^!]/.exec(nick)) {
-      alert("Не верно введен ник. Только буквы, цифры и '_', '-', '^', '!'");
+    if (/[^\w_]/.exec(nick)) {
+      alert("Не верно введен ник. Только буквы, цифры и '_'.");
       showConnect();
       return false;
     }
