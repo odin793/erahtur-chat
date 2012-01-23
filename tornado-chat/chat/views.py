@@ -11,6 +11,7 @@ import time
 import tornado.web
 from django_tornado.decorator import asynchronous
 
+max_idle_time = 60*60*2 # after two hours of idle user must be kicked off
 #
 #
 #
@@ -53,6 +54,7 @@ class Session(object) :
         self.nick = nick 
         Session.CUR_ID += 1
         self.id   = Session.CUR_ID 
+        self.last_activity_time = int(time.time())
 
         Session.SESSIONS[str(self.id)] = self # create new one
 
@@ -143,8 +145,15 @@ def send(request) :
     session = Session.get(id)
     if not session :
         return ChatResponseError('session expired')
-
+    
+    for v in Session.SESSIONS.values():
+        #print 'nick', v.nick
+        if int(time.time()) - v.last_activity_time > max_idle_time:
+            Session.remove(str(v.id))
+            #print 'delete idle user'
+            return ChatResponseError('session expired')
     channel.message('msg', session.nick, request.GET['text'])
+    session.last_activity_time = int(time.time())
 
     return ChatResponse({ 'rss' : channel.size() })
 
