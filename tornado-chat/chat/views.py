@@ -11,8 +11,8 @@ import time
 import tornado.web
 from django_tornado.decorator import asynchronous
 
-#max_idle_time = 60*60*2 # after two hours of idle user must be kicked off
-max_idle_time = 15
+max_idle_time = 60*60*2 # after two hours of idle user must be kicked off
+#max_idle_time = 15
 #
 #
 #
