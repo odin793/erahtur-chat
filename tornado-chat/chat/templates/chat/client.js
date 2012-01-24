@@ -7,7 +7,7 @@ var CONFIG = { debug: false
              };
 
 var nicks = [];
-var current_server_time = new Date();
+var current_server_time = new Date(); // updated from server
 
 //  CUT  ///////////////////////////////////////////////////////////////////
 /* This license and copyright apply to all code until the next "CUT"
@@ -414,7 +414,7 @@ function onConnect (session) {
     alert('Произошла ошибка. Пожалуйста, вернитесь на сайт и попробуйте зайти в чат снова.');
     return;
   }
-
+  who();
   CONFIG.nick = session.nick;
   CONFIG.id   = session.id;
   starttime   = new Date(session.starttime);
@@ -467,9 +467,7 @@ $(document).ready(function() {
     if (!util.isBlank(msg)) send(msg);
     
     $("#entry").attr("value", ""); // clear the entry field.
-    who();
   });
-
   $("#usersLink").click(outputUsers);
   $("#user_exit").click(unload_handler);
  
@@ -509,10 +507,10 @@ $(document).ready(function() {
     return false;
   });
 
-  // update the daemon uptime every 10 seconds
-  setInterval(function () {
+  // update the daemon uptime every 30 seconds
+  /*setInterval(function () {
     updateUptime();
-  }, 10*1000);
+  }, 30*1000);*/
 
   if (CONFIG.debug) {
     $("#loading").hide();
@@ -548,6 +546,7 @@ $(document).ready(function() {
   showConnect();
 });
 
+/*
 $(window).unload(function() {
   jQuery.get("/part", {id: CONFIG.id}, function (data) { }, "json");
   userPart(CONFIG.nick);            
@@ -573,5 +572,5 @@ else {
 */
 function unload_handler() {
     jQuery.get("/part", {id: CONFIG.id}, function (data) { }, "json");
-    userPart(CONFIG.nick);    
+    //userPart(CONFIG.nick);    
 }
